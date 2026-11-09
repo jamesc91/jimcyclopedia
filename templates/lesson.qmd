@@ -11,6 +11,12 @@ helpful: []                         # lessons that help but aren't required
 
 <!-- The "Before this lesson" box and "Where this leads" list are added automatically. -->
 
+## Why it matters
+
+One or two sentences on what this idea is for, then 4 to 6 short examples of
+where you would reach for it, each with a number or two. Mix fields: physical
+systems, engineering, everyday life, finance, software. No theory yet.
+
 ## The theory
 
 The core idea in plain words, kept short: the definition and the rules that
@@ -42,10 +48,6 @@ import numpy as np
 print(np.arange(3))
 </script></py-cell>
 ```
-
-## Where you'll see it
-
-Two or three real places this shows up.
 
 ## Practice questions
 

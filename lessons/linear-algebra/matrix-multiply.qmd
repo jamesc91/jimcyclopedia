@@ -8,6 +8,27 @@ requires: [dot-product]
 helpful: []
 ---
 
+## Why it matters
+
+Whenever many things each need a score on many measures, the work is a matrix
+multiply: every row of one table against every column of another, one dot
+product per pair, done in a single operation.
+
+- **Every neural network layer.** A batch of inputs, shape (batch × inputs),
+  times a weight matrix, shape (inputs × outputs). The
+  [forward pass](../neural-nets/forward-pass.qmd) is this, layer after layer.
+- **Attention in transformers.** Comparing every word in a sentence with every
+  other word is one matrix multiply, Q times K-transposed
+  ([Q, K and V as tensors](../transformers/qkv-tensors.qmd)).
+- **3D graphics and navigation.** Rotating 10,000 points from a drone camera's
+  frame into the world frame is one (10,000 × 3) · (3 × 3) multiply. Games do
+  the same to every corner of every shape, every frame.
+- **Ordering for a bakery.** Loaves planned per day (7 days × 3 breads) times
+  kilograms of each ingredient per loaf (3 breads × 4 ingredients) gives the
+  kilograms of flour, water, salt and yeast needed each day (7 × 4).
+- **Finance.** Daily returns (days × assets) times portfolio weights
+  (assets × portfolios) gives every portfolio's return on every day.
+
 ::: {.callout-tip collapse="true"}
 ## Quick refresher: the dot product
 
@@ -254,20 +275,6 @@ for ax, M, title, cmap in zip(axes, [X, W, X @ W],
 plt.tight_layout()
 </script></py-cell>
 ```
-
-## Where you'll see it
-
-- **Every neural network layer.** A batch of inputs, shape (batch × inputs),
-  times a weight matrix, shape (inputs × outputs). The
-  [forward pass](../neural-nets/forward-pass.qmd) lesson is this lesson
-  applied layer after layer.
-- **Attention in transformers.** Comparing every word in a sentence with every
-  other word is one matrix multiply, Q times K-transposed
-  ([Q, K and V as tensors](../transformers/qkv-tensors.qmd)).
-- **Navigation and graphics.** Rotating 10,000 points from a drone camera's frame
-  into the world frame is one (10,000 × 3) · (3 × 3) multiply.
-- **Finance.** Daily returns for many portfolios: (days × assets) times
-  (assets × portfolios) gives every portfolio's return on every day.
 
 ## Practice questions
 
