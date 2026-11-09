@@ -57,7 +57,7 @@ h1.title { font-size: 2.3rem; letter-spacing: -0.02em; }
 .vl-hero p { font-size: 1.15rem; color: var(--vl-muted); margin: 0 0 1.4rem; }
 .vl-hero .vl-cta { font-family: var(--vl-ui); font-weight: 500; display: inline-block; background: var(--vl-blue); color: var(--vl-surface); padding: 0.55rem 1.1rem; border-radius: 6px; text-decoration: none; }
 .vl-hero .vl-cta:hover { filter: brightness(1.08); }
-@media (max-width: 900px) { .vl-hero { grid-template-columns: 1fr; } }
+@media (max-width: 900px) { .vl-hero { grid-template-columns: minmax(0, 1fr); } }
 
 .path-list ul { list-style: none; padding-left: 0; }
 .path-list li { padding: 0.55rem 0 0.55rem 1rem; border-left: 3px solid var(--vl-grid); margin-bottom: 0.4rem; color: var(--vl-muted); }
@@ -150,6 +150,24 @@ h1.title { font-size: 2.3rem; letter-spacing: -0.02em; }
 .mm-compact { padding: 1rem; }
 .mm-compact .mm-corner { display: none; }
 .mm-compact .mm-table td { min-width: 3.9em; }
+
+/* Small screens: tighter spacing so the crossing layout fits more often. */
+@media (max-width: 600px) {
+  .mm, .mm-compact { padding: 0.85rem 0.7rem; }
+  .mm-table { border-spacing: 2px; }
+  .mm-table td, .mm-compact .mm-table td { min-width: 2.8em; padding: 0 5px; }
+  .mm-table th { white-space: normal; padding: 2px 3px; font-size: 0.72rem; }
+  .mm-table th.mm-cap { white-space: nowrap; }
+  .mm-controls button { padding: 0.35rem 0.65rem; }
+}
+
+/* Stacked layout, set by the widget when the crossing layout would scroll.
+   Row labels share one width so the weight and score columns line up. */
+.mm-stacked .mm-board { grid-template-columns: minmax(0, 1fr); grid-template-areas: "corner" "a" "b" "c"; }
+.mm-compact.mm-stacked .mm-board { grid-template-areas: "a" "b" "c"; }
+.mm-stacked .mm-a, .mm-stacked .mm-b { justify-self: start; }
+.mm-stacked .mm-corner { max-width: none; padding-bottom: 0; }
+.mm-stacked .mm-table th[scope="row"], .mm-stacked .mm-table th.mm-cap { width: 5.2rem; }
 
 /* ---------- Python cell ---------- */
 .pyc { display: block; margin: 1.5rem 0; border: 1px solid var(--vl-grid); border-radius: 10px; overflow: hidden; background: var(--vl-surface); }

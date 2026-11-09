@@ -2,7 +2,9 @@
 //
 // Layout follows the classic picture: the right-hand matrix sits above the
 // result, the left-hand matrix sits to its left, so every output cell lands
-// exactly where its row and its column cross.
+// exactly where its row and its column cross. When that picture is wider than
+// the space available (phones, big matrices), the widget adds the class
+// "mm-stacked" and the three matrices stack vertically instead of scrolling.
 //
 // Usage in a lesson (inside a ```{=html} block):
 //   <matmul-stepper
@@ -21,7 +23,7 @@ const minus = (s) => s.replace("-", "−");
 
 class MatmulStepper extends HTMLElement {
   connectedCallback() {
-    if (this._built) return;
+    if (this._built) return this.watchWidth();
     this._built = true;
     const json = (name, fallback) => {
       const v = this.getAttribute(name);
@@ -52,6 +54,24 @@ class MatmulStepper extends HTMLElement {
     this.total = this.m * this.p;
     this.build();
     this.render();
+    this.watchWidth();
+    document.fonts?.ready.then(() => this.fit()); // web fonts change table widths
+  }
+
+  // Use the crossing layout when it fits; otherwise stack the matrices.
+  fit() {
+    if (!this.$board) return;
+    this.classList.remove("mm-stacked");
+    if (this.$board.scrollWidth > this.$board.clientWidth + 1) this.classList.add("mm-stacked");
+  }
+
+  watchWidth() {
+    if (!this.$board) return;
+    this._ro ??= new ResizeObserver(([entry]) => {
+      const w = Math.round(entry.contentRect.width);
+      if (w !== this._width) { this._width = w; this.fit(); } // ignore height-only changes
+    });
+    this._ro.observe(this);
   }
 
   build() {
@@ -110,6 +130,7 @@ class MatmulStepper extends HTMLElement {
       "c"
     );
 
+    this.$board = this.querySelector(".mm-board");
     this.$calc = this.querySelector(".mm-calc");
     this.$count = this.querySelector(".mm-count");
     this.$play = this.querySelector('[data-act="play"]');
@@ -205,7 +226,10 @@ class MatmulStepper extends HTMLElement {
       <div class="mm-calc-eq">${terms} = <span class="mm-out">${minus(fmt(this.C[i][j], d))}</span></div>`;
   }
 
-  disconnectedCallback() { this.stop(); }
+  disconnectedCallback() {
+    this.stop();
+    this._ro?.disconnect();
+  }
 }
 
 if (!customElements.get("matmul-stepper")) customElements.define("matmul-stepper", MatmulStepper);
