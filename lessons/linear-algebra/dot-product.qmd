@@ -1,15 +1,291 @@
 ---
-title: Vectors and the dot product
-short-title: Dot product
-description: How similar are two things? One number answers it.
+title: "Vectors and the dot product"
+short-title: "Dot product"
+description: "One number that says how much two lists agree: a weighted score, or how well two arrows line up."
 lesson-id: dot-product
-status: planned
+status: published
 requires: []
 helpful: []
 ---
 
-## What this lesson will cover
+## Why it matters
 
-**Real-world example:** Scoring how similar two drone flight logs are.
+The dot product takes two lists of numbers and returns one number that says how
+much they agree. That question comes up all over engineering and data:
 
-**Signature visual:** Drag two arrows and watch the projection and the dot product update.
+- **Work done by a force.** A tow rope pulls a cart with 200 N, angled 30° above
+  the road, while the cart rolls 10 m. Only the part of the pull along the road
+  does work: 200 × 10 × cos 30° ≈ 1,732 J.
+- **Solar panels.** A panel tilted 40° away from the sun's rays collects
+  cos 40° ≈ 77% of the power it would get facing the sun square on.
+- **A shopping bill.** Quantities (3, 2, 1) times prices ($1.50, $4.00, $2.25)
+  gives 3 × 1.50 + 2 × 4.00 + 1 × 2.25 = $14.75.
+- **A neuron in a neural network.** Every input times its weight, added up. Each
+  score in [matrix multiply](matrix-multiply.qmd) is one dot product.
+- **Search and recommendations.** Songs, products and documents are stored as
+  long lists of numbers. The ones whose lists point the same way as yours count
+  as similar.
+- **Lighting in 3D graphics.** A surface is brightest when it faces the light. The
+  dot product of the two directions sets the brightness, and a negative value
+  means the surface faces away and sits in shadow.
+
+The bill and the neuron use it as a **weighted sum**. The force, the panel and
+search use it to ask **how well two directions line up**. They are the same
+calculation, and the theory below shows why.
+
+## The theory
+
+Take two lists of numbers of the same length. Multiply them position by position
+and add the results. That sum is the dot product.
+
+$$
+\mathbf{a} \cdot \mathbf{b} = a_1 b_1 + a_2 b_2 + \dots + a_n b_n
+$$
+
+For a = (3, 4) and b = (2, 1): a · b = 3 × 2 + 4 × 1 = 10.
+
+Now draw each list as an arrow from the origin: a goes 3 right and 4 up, b goes
+2 right and 1 up. The same number is also
+
+$$
+\mathbf{a} \cdot \mathbf{b} = \lVert \mathbf{a} \rVert \, \lVert \mathbf{b} \rVert \cos\theta
+$$
+
+the length of a, times the length of b, times the cosine of the angle between
+them. Here that is 5 × 2.24 × cos 26.6° = 10. Four rules follow:
+
+- **The two lists must be the same length.** Every number needs a partner.
+- **The sign gives the direction.** Positive when the arrows point the same
+  general way, zero when they are at right angles, negative when they point
+  generally opposite ways.
+- **The size grows with length.** Double a and a · b doubles. Divide by both
+  lengths and you get **cosine similarity**, cos θ, which runs from −1 to 1 and
+  measures direction only.
+- **Order doesn't matter.** a · b = b · a.
+
+```{=html}
+<figure class="vl-fig vl-fig-narrow">
+<svg viewBox="0 0 340 280" role="img" aria-label="Arrow a, 3 right and 4 up, and arrow b, 2 right and 1 up, with the angle theta between them. A dashed line drops from the tip of a onto the line of b, marking a's shadow on b, of length 4.47.">
+  <line class="rule" x1="40" y1="250" x2="330" y2="250"/>
+  <line class="rule" x1="40" y1="250" x2="40" y2="20"/>
+  <line class="line-amber dash" x1="140" y1="200" x2="312" y2="114" stroke-opacity="0.5" stroke-width="1.5"/>
+  <line class="band" x1="40" y1="250" x2="240" y2="150"/>
+  <line class="line-ink dash" x1="190" y1="50" x2="240" y2="150"/>
+  <path class="line-ink" d="M232.8 153.6 L229.2 146.4 L236.4 142.8"/>
+  <path class="line-ink" d="M72.2 233.9 A36 36 0 0 0 61.6 221.2"/>
+  <text class="ink" x="80" y="224" font-size="15" font-style="italic">θ</text>
+  <line class="line-amber" x1="40" y1="250" x2="128.4" y2="205.8"/>
+  <polygon class="fill-amber" points="140,200 131.1,211.2 125.7,200.4"/>
+  <line class="line-blue" x1="40" y1="250" x2="182.2" y2="60.4"/>
+  <polygon class="blue" points="190,50 187,64 177.4,56.8"/>
+  <circle class="ink" cx="40" cy="250" r="3"/>
+  <text class="blue" x="198" y="50" font-size="15" font-weight="600">a = (3, 4)</text>
+  <text class="amber" x="128" y="228" font-size="15" font-weight="600">b = (2, 1)</text>
+  <text class="muted" x="222" y="198" font-size="13" transform="rotate(-26.57 222 198)">shadow = 4.47</text>
+</svg>
+<figcaption>Drop a straight down onto b's line and you get a's shadow on b. The dot
+product is b's length times that shadow: 2.24 × 4.47 = 10.</figcaption>
+</figure>
+```
+
+## The problem
+
+A drone maintenance team pulls the vibration log after every flight. The log
+splits vibration into two frequency bands: the **rotor band**, at the rate the
+propellers spin, and the **high band**, well above it. Each is measured as RMS
+acceleration in m/s². Known faults leave known patterns, or *signatures*
+(the numbers here are illustrative):
+
+| Signature      | Rotor band (m/s²) | High band (m/s²) |
+|:---------------|------------------:|-----------------:|
+| Prop imbalance | 6                 | 1                |
+| Bearing wear   | 1                 | 5                |
+
+: Two fault signatures {.striped}
+
+Two flights come in from the same drone. One flew hard into a headwind and logged
+(9, 3). The other was a gentle survey flight and logged (3, 1). The pattern is
+the same, just three times weaker. Which fault does each log point to?
+
+A first try is to dot each log with each signature and pick the bigger score.
+The hard flight scores 57 for prop imbalance; the gentle flight scores only 19.
+That makes the gentle flight look three times healthier, when both logs show the
+same fault. The raw dot product mixes up *how strong* the vibration is with
+*what shape* it has. Cosine similarity keeps only the shape.
+
+## Interactive
+
+The blue arrow is a flight's log and the amber arrow is a fault signature. Drag
+either tip, or tab to it and use the arrow keys. The buttons load the two
+flights and the two signatures.
+
+```{=html}
+<vector-dot
+  a="[9,3]" b="[6,1]"
+  a-label="Flight" b-label="Signature"
+  x-label="Rotor band (m/s²)" y-label="High band (m/s²)"
+  x-range="[-4,10]" y-range="[-4,7]"
+  step="0.5" decimals="2"
+  presets='[{"label":"Hard flight","a":[9,3]},{"label":"Gentle flight","a":[3,1]},{"label":"Prop imbalance","b":[6,1]},{"label":"Bearing wear","b":[1,5]}]'></vector-dot>
+```
+
+Switch between the hard and the gentle flight. The dot product drops from 57 to
+19, but the angle and the cosine don't move. Then drag the signature round until
+it sits at right angles to the flight: the shadow shrinks to nothing and the dot
+product hits 0. Keep going and both turn negative.
+
+## The math, minimal
+
+For two lists of length n, both of shape (n,):
+
+$$
+\begin{aligned}
+\mathbf{a} \cdot \mathbf{b} &= \sum_{i=1}^{n} a_i b_i \\[4pt]
+\lVert \mathbf{a} \rVert &= \sqrt{\mathbf{a} \cdot \mathbf{a}} \\[4pt]
+\cos\theta &= \frac{\mathbf{a} \cdot \mathbf{b}}{\lVert \mathbf{a} \rVert \, \lVert \mathbf{b} \rVert}
+\end{aligned}
+$$
+
+- **Shapes:** (n,) · (n,) → a single number. Here n = 2 bands; Run the code
+  uses 3; the word lists inside a language model use thousands.
+- **Length:** a dotted with itself is Pythagoras: 3² + 4² = 25, so ‖(3, 4)‖ = 5.
+- **Shadow:** a's shadow on b is a · b / ‖b‖. That is the picture's rule,
+  a · b = ‖b‖ × shadow, rearranged.
+- **Cost:** n multiplications and n − 1 additions.
+
+::: {.callout-tip collapse="true"}
+## Why the two formulas give the same number
+
+Expand the length of the gap between the two tips, a − b, with the sum formula:
+‖a − b‖² = ‖a‖² + ‖b‖² − 2 a · b. The law of cosines says the same side of the
+triangle is ‖a − b‖² = ‖a‖² + ‖b‖² − 2 ‖a‖ ‖b‖ cos θ. Compare the two and
+a · b = ‖a‖ ‖b‖ cos θ.
+:::
+
+## Worked example
+
+The hard flight is a = (9, 3). Score it against both signatures.
+
+**Dot products.** Prop imbalance: 9 × 6 + 3 × 1 = 57. Bearing wear:
+9 × 1 + 3 × 5 = 24.
+
+**Lengths.** ‖a‖ = √(81 + 9) = √90 ≈ 9.49. Prop imbalance: √(36 + 1) = √37 ≈ 6.08.
+Bearing wear: √(1 + 25) = √26 ≈ 5.10.
+
+**Cosines.** Prop imbalance: 57 / (9.49 × 6.08) ≈ 0.99, an angle of about 9.0°.
+Bearing wear: 24 / (9.49 × 5.10) ≈ 0.50, about 60.3°.
+
+The gentle flight, (3, 1), is the hard flight divided by 3. Its dot products
+are divided by 3 as well, and so is its length, so the cosines don't change:
+
+|                                  | Prop imbalance (6, 1) | Bearing wear (1, 5) |
+|:---------------------------------|----------------------:|--------------------:|
+| Dot product, hard flight (9, 3)  | 57                    | 24                  |
+| Dot product, gentle flight (3, 1) | 19                   | 8                   |
+| **Cosine similarity, either flight** | **0.99**          | **0.50**            |
+
+: Raw scores depend on how hard the drone flew; cosine similarity doesn't {.striped}
+
+Both logs point to prop imbalance. The team balances the propellers before the
+next flight.
+
+## Run the code
+
+In NumPy, `@` between two lists is the dot product. Edit anything and press
+**Run** (or Ctrl+Enter).
+
+```{=html}
+<py-cell packages="numpy"><script type="text/x-python">
+import numpy as np
+
+# Vibration in two bands (m/s^2 RMS): rotor band, high band. Illustrative.
+prop    = np.array([6.0, 1.0])   # prop imbalance signature
+bearing = np.array([1.0, 5.0])   # bearing wear signature
+hard    = np.array([9.0, 3.0])   # hard flight
+gentle  = hard / 3               # same pattern, a third as strong
+
+def cosine(a, b):
+    return a @ b / (np.linalg.norm(a) * np.linalg.norm(b))
+
+for name, flight in [("hard", hard), ("gentle", gentle)]:
+    print(f"{name:6}  dot:    prop {flight @ prop:5.1f}   bearing {flight @ bearing:5.1f}")
+    print(f"{'':6}  cosine: prop {cosine(flight, prop):5.2f}   bearing {cosine(flight, bearing):5.2f}")
+</script></py-cell>
+```
+
+Real logs have more than two bands, and the formula doesn't change. Below, a
+third band is added for the motors, and four flights are checked against three
+faults at once. Dividing every row by its length first turns each dot product
+into a cosine, so one [matrix multiply](matrix-multiply.qmd) scores every flight
+against every fault.
+
+```{=html}
+<py-cell packages="numpy"><script type="text/x-python">
+import numpy as np
+
+# Three bands (m/s^2 RMS): rotor, motor, high. Illustrative.
+names = ["prop imbalance", "loose motor mount", "bearing wear"]
+signatures = np.array([[6.0, 1.5, 1.0],
+                       [1.5, 6.0, 1.0],
+                       [1.0, 1.5, 5.0]])    # (3 faults, 3 bands)
+logs = np.array([[8.0, 3.0, 2.0],
+                 [2.0, 2.5, 6.5],
+                 [1.2, 3.1, 0.8],
+                 [4.0, 3.5, 3.0]])          # (4 flights, 3 bands)
+
+def unit(rows):
+    return rows / np.linalg.norm(rows, axis=1, keepdims=True)
+
+cos = unit(logs) @ unit(signatures).T       # (4, 3) @ (3, 3) -> (4, 3)
+print(cos.round(2))
+for i, row in enumerate(cos):
+    print(f"flight {i + 1}: closest to {names[row.argmax()]} ({row.max():.2f})")
+</script></py-cell>
+```
+
+Flights 1 to 3 each match one fault at 0.99. Flight 4's best match is only
+0.84, because its vibration is spread across all three bands. That is a log to
+hand to a person rather than trust to the closest match.
+
+## Practice questions
+
+**1.** What is (2, −1) · (1, 2), and what does it tell you about the two arrows?
+
+::: {.callout-note collapse="true" appearance="minimal"}
+## Answer
+2 × 1 + (−1) × 2 = 0. The arrows are at right angles.
+:::
+
+**2.** Can you take the dot product of (1, 2, 3) and (4, 5)?
+
+::: {.callout-note collapse="true" appearance="minimal"}
+## Answer
+No. The third number, 3, has no partner. The lists must be the same length.
+:::
+
+**3.** A new flight logs (2, 6). Which signature does it match, and how closely?
+
+::: {.callout-note collapse="true" appearance="minimal"}
+## Answer
+Bearing wear. Its cosine with (1, 5) is 32 / (6.32 × 5.10) ≈ 0.99. With prop
+imbalance, (6, 1), it is only 18 / (6.32 × 6.08) ≈ 0.47.
+:::
+
+**4.** A sled is pulled with a force of (30, 40) N, 30 N forward and 40 N
+upward, and slides (5, 0) m along flat snow. How much work does the pull do?
+
+::: {.callout-note collapse="true" appearance="minimal"}
+## Answer
+Work is force · displacement: 30 × 5 + 40 × 0 = 150 J. The upward 40 N does no
+work, because the sled never moves up.
+:::
+
+**5.** You double both a and b. What happens to a · b, and to the cosine
+similarity?
+
+::: {.callout-note collapse="true" appearance="minimal"}
+## Answer
+a · b grows four times, because every product a<sub>i</sub>b<sub>i</sub> doubles
+twice. The cosine doesn't change: the lengths in the bottom of the fraction also
+grow four times, and the directions stay the same.
+:::

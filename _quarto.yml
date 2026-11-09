@@ -51,6 +51,7 @@ format:
     include-in-header:
       - text: |
           <script type="module" src="/shared/widgets/matmul-stepper.js"></script>
+          <script type="module" src="/shared/widgets/vector-dot.js"></script>
           <script type="module" src="/shared/widgets/py-cell.js"></script>
     filters:
       - filters/prereqs.lua

@@ -6,7 +6,7 @@ website:
     - section: Math foundations
       contents:
       - href: lessons/linear-algebra/dot-product.qmd
-        text: Dot product [soon]{.soon}
+        text: Dot product
       - href: lessons/linear-algebra/matrix-multiply.qmd
         text: Matrix multiply
       - href: lessons/linear-algebra/tensors.qmd

@@ -158,8 +158,8 @@
     "file": "lessons/linear-algebra/dot-product.qmd",
     "href": "lessons/linear-algebra/dot-product.html",
     "topic": "linear-algebra",
-    "status": "planned",
-    "summary": "How similar are two things? One number answers it.",
+    "status": "published",
+    "summary": "One number that says how much two lists agree: a weighted score, or how well two arrows line up.",
     "requires": [],
     "helpful": [],
     "leads_to": [

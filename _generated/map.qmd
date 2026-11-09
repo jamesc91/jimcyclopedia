@@ -78,7 +78,8 @@ flowchart TB
   forward_pass --> transformer_block
   classDef published fill:#dce8fb,stroke:#1f5fbf,stroke-width:2px,color:#1b2430
   classDef planned fill:#ffffff,stroke:#b4bdc9,color:#5b6675
-  class matrix_multiply published
-  class gradients,agents,classic_nlp,decoding,evaluating_llms,lora,rag,rlhf_dpo,semantic_search,dot_product,tensors,activations,backpropagation,forward_pass,gradient_descent,loss_functions,overfitting,single_neuron,train_a_network,softmax_cross_entropy,attention_idea,heads_position,next_token_training,qkv_tensors,rnns,tiny_gpt,tokens_embeddings,transformer_block planned
+  class dot_product,matrix_multiply published
+  class gradients,agents,classic_nlp,decoding,evaluating_llms,lora,rag,rlhf_dpo,semantic_search,tensors,activations,backpropagation,forward_pass,gradient_descent,loss_functions,overfitting,single_neuron,train_a_network,softmax_cross_entropy,attention_idea,heads_position,next_token_training,qkv_tensors,rnns,tiny_gpt,tokens_embeddings,transformer_block planned
+  click dot_product "lessons/linear-algebra/dot-product.html"
   click matrix_multiply "lessons/linear-algebra/matrix-multiply.html"
 ```
