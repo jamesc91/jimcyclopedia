@@ -11,16 +11,18 @@ helpful: []                         # lessons that help but aren't required
 
 <!-- The "Before this lesson" box and "Where this leads" list are added automatically. -->
 
+## The theory
+
+The core idea in plain words, kept short: the definition and the rules that
+follow from it, with one tiny example. Put the lesson's one static diagram here,
+so the picture carries the idea before the full math.
+
 ## The problem
 
-A real situation in two or three sentences, with real numbers. Introduce the
-concept as the tool that solves it.
+A real situation with real numbers, where the theory above is the tool that
+solves it.
 
-## The picture
-
-One diagram that carries the idea before any math.
-
-## Play with it
+## Interactive
 
 The signature interactive. Reuse a widget from shared/widgets/ where you can.
 
@@ -45,7 +47,7 @@ print(np.arange(3))
 
 Two or three real places this shows up.
 
-## Check yourself
+## Practice questions
 
 **1.** A question.
 

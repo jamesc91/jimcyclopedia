@@ -16,47 +16,30 @@ For a drone with readings (22.8, 41) and weights (1.0, −0.1):
 22.8 × 1.0 + 41 × (−0.1) = 18.7. One weighted score from one list of readings.
 :::
 
-## The problem
+## The theory
 
-Before every flight, a ground crew checks a fleet of drones. Each drone reports
-four readings: battery voltage, motor temperature, wind at the launch site and
-payload weight. From those four numbers the crew wants two scores per drone:
+To multiply matrix A by matrix B, take every row of A and every column of B and
+dot them together. Each row–column pair gives one number, and that number goes
+in the result at that row and that column.
 
-- **Power margin:** how much energy headroom the flight has. High battery helps; heat, wind and payload eat into it.
-- **Handling risk:** how hard the drone will be to control. Wind and payload push it up.
+$$
+\begin{aligned}
+AB &= \begin{bmatrix} 1 & 2 \\ 3 & 4 \end{bmatrix} \begin{bmatrix} 5 & 6 \\ 7 & 8 \end{bmatrix} \\[4pt]
+   &= \begin{bmatrix} 1\cdot5 + 2\cdot7 & 1\cdot6 + 2\cdot8 \\ 3\cdot5 + 4\cdot7 & 3\cdot6 + 4\cdot8 \end{bmatrix} \\[4pt]
+   &= \begin{bmatrix} 19 & 22 \\ 43 & 50 \end{bmatrix}
+\end{aligned}
+$$
 
-Each score is a weighted sum of the four readings, which is a
-[dot product](dot-product.qmd). Three drones and two scores means
-six dot products. A real fleet of 200 drones scored on 16 measures needs 3,200,
-and a neural network layer does the same thing thousands of times per second.
-Matrix multiplication is the bookkeeping that does all of them at once.
+Row 1 of A with column 1 of B gives the top-left cell: 1 × 5 + 2 × 7 = 19.
+Three rules follow from that one idea:
 
-| Drone | Battery (V) | Motor temp (°C) | Wind (m/s) | Payload (kg) |
-|:------|------------:|----------------:|-----------:|-------------:|
-| A     | 22.8        | 41              | 6          | 1.2          |
-| B     | 21.1        | 55              | 9          | 2.0          |
-| C     | 23.4        | 38              | 3          | 0.5          |
-
-: The readings, one row per drone {.striped}
-
-The weights say how much each reading counts toward each score (they are
-illustrative, not from a real flight manual):
-
-| Reading      | Power margin | Handling risk |
-|:-------------|-------------:|--------------:|
-| Battery      | 1.00         | 0.00          |
-| Motor temp   | −0.10        | 0.02          |
-| Wind         | −0.30        | 0.50          |
-| Payload      | −2.00        | 0.80          |
-
-: The weights, one column per score {.striped}
-
-## The picture
-
-Stack the readings into a matrix **X** with one row per drone, and the weights
-into a matrix **W** with one column per score. Every score is one row of X
-dotted with one column of W. The only rule is that the row and the column must
-be the same length, because each reading needs a weight.
+- **A's columns must match B's rows.** A row of A and a column of B are
+  multiplied number by number, so they need the same length.
+- **The result has A's rows and B's columns.** An (m × n) matrix times an
+  (n × p) matrix gives an (m × p) result: one cell for every row–column pair.
+- **Order matters.** BA pairs B's rows with A's columns, a different
+  calculation. Here BA starts with 5 × 1 + 6 × 3 = 23, not 19. Often only one
+  order is even defined.
 
 ```{=html}
 <figure class="vl-fig">
@@ -83,19 +66,57 @@ be the same length, because each reading needs a weight.
     <text class="ink" x="494" y="74">)</text>
   </g>
   <g font-size="12.5" text-anchor="middle">
-    <text class="muted" x="92" y="104">X: 3 drones,</text>
-    <text class="muted" x="92" y="121">4 readings each</text>
-    <text class="muted" x="268" y="104">W: 4 weights,</text>
-    <text class="muted" x="268" y="121">for 2 scores</text>
-    <text class="muted" x="444" y="104">Result: 3 drones,</text>
-    <text class="muted" x="444" y="121">2 scores each</text>
+    <text class="muted" x="92" y="104">A: 3 rows,</text>
+    <text class="muted" x="92" y="121">4 columns</text>
+    <text class="muted" x="268" y="104">B: 4 rows,</text>
+    <text class="muted" x="268" y="121">2 columns</text>
+    <text class="muted" x="444" y="104">Result: A's rows,</text>
+    <text class="muted" x="444" y="121">B's columns</text>
   </g>
 </svg>
 <figcaption>Write the shapes side by side. The two inner numbers must match; the two outer numbers are the shape of the answer.</figcaption>
 </figure>
 ```
 
-## Play with it
+## The problem
+
+Before every flight, a ground crew checks a fleet of drones. Each drone reports
+four readings: battery voltage, motor temperature, wind at the launch site and
+payload weight. From those four numbers the crew wants two scores per drone:
+
+- **Power margin:** how much energy headroom the flight has. High battery helps; heat, wind and payload eat into it.
+- **Handling risk:** how hard the drone will be to control. Wind and payload push it up.
+
+Each score is a weighted sum of the four readings, which is a
+[dot product](dot-product.qmd). Three drones and two scores means six dot
+products; a fleet of 200 drones scored on 16 measures needs 3,200.
+
+| Drone | Battery (V) | Motor temp (°C) | Wind (m/s) | Payload (kg) |
+|:------|------------:|----------------:|-----------:|-------------:|
+| A     | 22.8        | 41              | 6          | 1.2          |
+| B     | 21.1        | 55              | 9          | 2.0          |
+| C     | 23.4        | 38              | 3          | 0.5          |
+
+: The readings, one row per drone {.striped}
+
+The weights say how much each reading counts toward each score (they are
+illustrative, not from a real flight manual):
+
+| Reading      | Power margin | Handling risk |
+|:-------------|-------------:|--------------:|
+| Battery      | 1.00         | 0.00          |
+| Motor temp   | −0.10        | 0.02          |
+| Wind         | −0.30        | 0.50          |
+| Payload      | −2.00        | 0.80          |
+
+: The weights, one column per score {.striped}
+
+Stack the readings into a matrix **X** (3 × 4), one row per drone, and the
+weights into **W** (4 × 2), one column per score. The inner sizes match because
+every reading has a weight, so XW is (3 × 2): every score for every drone, in
+one multiply.
+
+## Interactive
 
 The weights sit above the answer and the readings sit to its left, so every
 answer cell lands exactly where its row and its column cross. Step through the
@@ -125,12 +146,12 @@ $$
 (XW)_{ij} \;=\; \sum_{k=1}^{n} X_{ik}\, W_{kj}
 $$
 
-- **Shapes:** an (m × n) matrix times an (n × p) matrix gives an (m × p) matrix.
-  Here m = 3 drones, n = 4 readings and p = 2 scores.
+- **Shapes:** (m × n) · (n × p) → (m × p). Here m = 3 drones, n = 4 readings
+  and p = 2 scores.
 - **Cost:** every answer cell takes n multiplications, so the whole product takes
   m · n · p of them. For the fleet: 3 × 4 × 2 = 24.
-- **Order matters:** XW and WX are different. Here WX is not even defined, because
-  (4 × 2) · (3 × 4) has inner sizes 2 and 3.
+- **Order:** WX is not defined here, because (4 × 2) · (3 × 4) has inner sizes
+  2 and 3.
 
 ## Worked example
 
@@ -247,7 +268,7 @@ plt.tight_layout()
 - **Finance.** Daily returns for many portfolios: (days × assets) times
   (assets × portfolios) gives every portfolio's return on every day.
 
-## Check yourself
+## Practice questions
 
 **1.** A batch of 64 images, each flattened to 128 numbers, goes through a layer
 with 10 outputs. What shapes are the weight matrix and the result?
