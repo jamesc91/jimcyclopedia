@@ -1,0 +1,3 @@
+# Cloudflare static-assets redirects. The About page was folded into the home page.
+/about       /  301
+/about.html  /  301

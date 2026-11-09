@@ -3,5 +3,5 @@ title: "Page not found"
 toc: false
 ---
 
-That page doesn't exist, or it moved. Try the [lesson list](/index.html) or the
+That page doesn't exist, or it moved. Try the [home page](/index.html) or the
 [lesson map](/map.html).

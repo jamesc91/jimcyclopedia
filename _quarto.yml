@@ -10,6 +10,7 @@ project:
     - "!templates/"        # the lesson template is a starting point, not a page
   resources:
     - shared/
+    - _redirects            # Cloudflare redirects, e.g. the old /about page
 
 # The sidebar is generated from paths/*.yml by the pre-render script.
 metadata-files:
@@ -17,7 +18,7 @@ metadata-files:
 
 website:
   title: "Jimcyclopedia"             # change the site name here
-  description: "Engineering, math and machine learning, taught with pictures you can play with."
+  description: "Lessons on engineering, math and machine learning, each built on a picture and a real-world example."
   site-url: "https://jimcyclopedia.jamesrcook1991.workers.dev"   # change if you add a custom domain
   repo-url: "https://github.com/jamesc91/jimcyclopedia"
   page-navigation: true
@@ -26,12 +27,10 @@ website:
     type: overlay
   navbar:
     left:
-      - text: "Lessons"
+      - text: "Home"
         href: index.qmd
       - text: "Map"
         href: map.qmd
-      - text: "About"
-        href: about.qmd
     right:
       - icon: github
         href: "https://github.com/jamesc91/jimcyclopedia"
