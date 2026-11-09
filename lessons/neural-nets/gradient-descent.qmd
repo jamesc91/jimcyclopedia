@@ -1,0 +1,17 @@
+---
+title: Gradient descent and the learning rate
+short-title: Gradient descent
+description: Walking downhill on the loss, one careful step at a time.
+lesson-id: gradient-descent
+status: planned
+requires:
+- loss-functions
+- gradients
+helpful: []
+---
+
+## What this lesson will cover
+
+**Real-world example:** Tuning a controller by trial and error, done systematically.
+
+**Signature visual:** An optimizer race on a loss surface: SGD, momentum and Adam.

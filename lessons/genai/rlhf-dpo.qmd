@@ -1,0 +1,16 @@
+---
+title: 'Alignment: RLHF and DPO'
+short-title: RLHF and DPO
+description: Turning human preferences into a training signal.
+lesson-id: rlhf-dpo
+status: planned
+requires:
+- next-token-training
+helpful: []
+---
+
+## What this lesson will cover
+
+**Real-world example:** Teaching a model which of two answers people prefer.
+
+**Signature visual:** The RL loop drawn as a control loop: policy, reward model, update.

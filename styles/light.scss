@@ -1,0 +1,27 @@
+/*-- scss:defaults --*/
+// Fonts: Source Serif 4 for reading, IBM Plex Sans for interface and headings,
+// IBM Plex Mono for numbers in matrices and code.
+$web-font-path: "https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap";
+$font-family-sans-serif: "Source Serif 4", Georgia, serif;
+$headings-font-family: "IBM Plex Sans", system-ui, sans-serif;
+$font-family-monospace: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+$headings-font-weight: 600;
+
+// Palette: slate ink on cool paper; signal blue for inputs, amber for weights.
+$body-bg: #F7F8FA;
+$body-color: #1B2430;
+$primary: #1F5FBF;
+$secondary: #5B6675;
+$link-color: #1F5FBF;
+$navbar-bg: #FFFFFF;
+$navbar-fg: #1B2430;
+$navbar-hl: #1F5FBF;
+$footer-bg: #F7F8FA;
+$code-color: #1B2430;
+$code-bg: #ECEFF3;
+$border-color: #DDE3EA;
+$callout-color-note: #1F5FBF;
+$callout-color-tip: #2E7D5B;
+
+/*-- scss:rules --*/
+body { font-size: 1.07rem; line-height: 1.7; }

@@ -1,0 +1,18 @@
+---
+title: Queries, keys and values as tensors
+short-title: Q, K, V tensors
+description: The attention idea, written as four matrix steps you can watch.
+lesson-id: qkv-tensors
+status: planned
+requires:
+- attention-idea
+- matrix-multiply
+helpful:
+- tensors
+---
+
+## What this lesson will cover
+
+**Real-world example:** The same sentence, now as matrices.
+
+**Signature visual:** Q times K transposed, scale, softmax, times V, animated with shapes on every arrow.

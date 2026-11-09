@@ -1,0 +1,55 @@
+---
+# Copy this file into lessons/<topic>/<lesson-id>.qmd and fill it in.
+title: "Full lesson title"
+short-title: "Short title"          # used in the sidebar and the map
+description: "One sentence on what the reader will be able to do or see."
+lesson-id: my-lesson-id             # must match the file name; never change it once published
+status: draft                       # planned | draft | published
+requires: []                        # only lessons this one directly uses
+helpful: []                         # lessons that help but aren't required
+---
+
+<!-- The "Before this lesson" box and "Where this leads" list are added automatically. -->
+
+## The problem
+
+A real situation in two or three sentences, with real numbers. Introduce the
+concept as the tool that solves it.
+
+## The picture
+
+One diagram that carries the idea before any math.
+
+## Play with it
+
+The signature interactive. Reuse a widget from shared/widgets/ where you can.
+
+## The math, minimal
+
+Only the equations needed, each tied to the picture, with shapes written out.
+
+## Worked example
+
+The problem from the top, solved by hand with numbers a reader can check.
+
+## Run the code
+
+```{=html}
+<py-cell packages="numpy"><script type="text/x-python">
+import numpy as np
+print(np.arange(3))
+</script></py-cell>
+```
+
+## Where you'll see it
+
+Two or three real places this shows up.
+
+## Check yourself
+
+**1.** A question.
+
+::: {.callout-note collapse="true" appearance="minimal"}
+## Answer
+The answer, with a sentence on why.
+:::

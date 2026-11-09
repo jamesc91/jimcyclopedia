@@ -1,0 +1,18 @@
+---
+title: Evaluating LLMs
+short-title: Evaluating LLMs
+description: How to tell whether a model that writes text is telling the truth.
+lesson-id: evaluating-llms
+status: planned
+requires:
+- decoding
+helpful:
+- rag
+- agents
+---
+
+## What this lesson will cover
+
+**Real-world example:** Is the policy assistant telling the truth?.
+
+**Signature visual:** Answers split into claims, each marked supported or not against its source.

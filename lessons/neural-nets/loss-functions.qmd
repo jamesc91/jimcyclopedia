@@ -1,0 +1,17 @@
+---
+title: Loss functions
+short-title: Loss functions
+description: One number for how wrong the network is, chosen to match the job.
+lesson-id: loss-functions
+status: planned
+requires:
+- forward-pass
+helpful:
+- softmax-cross-entropy
+---
+
+## What this lesson will cover
+
+**Real-world example:** Predicting engine fuel burn versus flagging a fault.
+
+**Signature visual:** The same errors scored by squared error and cross-entropy, side by side.

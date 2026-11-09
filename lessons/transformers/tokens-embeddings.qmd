@@ -1,0 +1,16 @@
+---
+title: Tokens and embeddings
+short-title: Tokens, embeddings
+description: How text becomes numbers that know which words mean similar things.
+lesson-id: tokens-embeddings
+status: planned
+requires:
+- dot-product
+helpful: []
+---
+
+## What this lesson will cover
+
+**Real-world example:** Phone autocomplete.
+
+**Signature visual:** A tokenizer playground and a word map where king minus man plus woman lands near queen.

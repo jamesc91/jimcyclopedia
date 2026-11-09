@@ -1,0 +1,15 @@
+---
+title: Derivatives, gradients and the chain rule
+short-title: Gradients
+description: Which way is downhill, and how fast, when many knobs move at once.
+lesson-id: gradients
+status: planned
+requires: []
+helpful: []
+---
+
+## What this lesson will cover
+
+**Real-world example:** Tuning a PID gain to cut overshoot.
+
+**Signature visual:** A ball rolling on a cost surface; the chain rule drawn as meshed gears.

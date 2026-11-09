@@ -1,0 +1,16 @@
+---
+title: "Lesson map"
+description: "Every lesson and what it builds on. Click a published lesson to open it."
+toc: false
+page-layout: full
+sidebar: false
+---
+
+Solid arrows point from a lesson to the lessons that need it. Dashed arrows mark
+lessons that help but aren't required. Highlighted boxes are published; the rest
+are on the way. This map is drawn automatically from each lesson's header, so it
+is always current.
+
+::: {.vl-map}
+{{< include _generated/map.qmd >}}
+:::

@@ -1,0 +1,16 @@
+---
+title: Softmax and cross-entropy
+short-title: Softmax, cross-entropy
+description: Turning scores into probabilities, and grading a forecast that was confident
+  and wrong.
+lesson-id: softmax-cross-entropy
+status: planned
+requires: []
+helpful: []
+---
+
+## What this lesson will cover
+
+**Real-world example:** Grading a weather forecaster who says 70% rain.
+
+**Signature visual:** Scores turning into probabilities as a temperature slider moves.

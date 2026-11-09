@@ -1,0 +1,18 @@
+---
+title: The transformer block
+short-title: Transformer block
+description: Attention, feed-forward, residuals and normalization, assembled into
+  one layer.
+lesson-id: transformer-block
+status: planned
+requires:
+- heads-position
+- forward-pass
+helpful: []
+---
+
+## What this lesson will cover
+
+**Real-world example:** Assembling the parts into one layer.
+
+**Signature visual:** A token's vector flowing through every part of the block.

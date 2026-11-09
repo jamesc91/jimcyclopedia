@@ -1,0 +1,17 @@
+---
+title: Tensors, shapes and broadcasting
+short-title: Tensors and shapes
+description: Matrices with more than two directions, and how to keep track of their
+  shapes.
+lesson-id: tensors
+status: planned
+requires:
+- matrix-multiply
+helpful: []
+---
+
+## What this lesson will cover
+
+**Real-world example:** A batch of 64 camera frames, each 3 by 224 by 224.
+
+**Signature visual:** Stacked blocks that slice, reshape and broadcast as you click.

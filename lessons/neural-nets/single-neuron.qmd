@@ -1,0 +1,16 @@
+---
+title: A single neuron
+short-title: Single neuron
+description: 'A weighted vote plus a threshold: the smallest possible learned decision.'
+lesson-id: single-neuron
+status: planned
+requires:
+- dot-product
+helpful: []
+---
+
+## What this lesson will cover
+
+**Real-world example:** Go or no-go for a drone, from battery voltage and wind speed.
+
+**Signature visual:** Weight and bias sliders rotate and shift a decision line through real flight data.

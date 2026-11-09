@@ -1,0 +1,15 @@
+---
+title: Vectors and the dot product
+short-title: Dot product
+description: How similar are two things? One number answers it.
+lesson-id: dot-product
+status: planned
+requires: []
+helpful: []
+---
+
+## What this lesson will cover
+
+**Real-world example:** Scoring how similar two drone flight logs are.
+
+**Signature visual:** Drag two arrows and watch the projection and the dot product update.

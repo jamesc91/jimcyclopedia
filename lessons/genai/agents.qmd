@@ -1,0 +1,17 @@
+---
+title: Agents and tool use
+short-title: Agents
+description: An LLM in a loop that can act, and the controls that keep it safe.
+lesson-id: agents
+status: planned
+requires:
+- decoding
+helpful:
+- rag
+---
+
+## What this lesson will cover
+
+**Real-world example:** An assistant that books travel within a budget.
+
+**Signature visual:** A trace of plan, tool call and observation, with the controls marked.

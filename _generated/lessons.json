@@ -1,0 +1,516 @@
+{
+  "gradients": {
+    "id": "gradients",
+    "title": "Derivatives, gradients and the chain rule",
+    "short": "Gradients",
+    "file": "lessons/calculus/gradients.qmd",
+    "href": "lessons/calculus/gradients.html",
+    "topic": "calculus",
+    "status": "planned",
+    "summary": "Which way is downhill, and how fast, when many knobs move at once.",
+    "requires": [],
+    "helpful": [],
+    "leads_to": [
+      "gradient-descent"
+    ]
+  },
+  "agents": {
+    "id": "agents",
+    "title": "Agents and tool use",
+    "short": "Agents",
+    "file": "lessons/genai/agents.qmd",
+    "href": "lessons/genai/agents.html",
+    "topic": "genai",
+    "status": "planned",
+    "summary": "An LLM in a loop that can act, and the controls that keep it safe.",
+    "requires": [
+      "decoding"
+    ],
+    "helpful": [
+      "rag"
+    ],
+    "leads_to": []
+  },
+  "classic-nlp": {
+    "id": "classic-nlp",
+    "title": "Classic NLP with transformers",
+    "short": "Classic NLP",
+    "file": "lessons/genai/classic-nlp.qmd",
+    "href": "lessons/genai/classic-nlp.html",
+    "topic": "genai",
+    "status": "planned",
+    "summary": "Classification and entity extraction, the workhorse NLP inside every bank.",
+    "requires": [
+      "transformer-block"
+    ],
+    "helpful": [
+      "train-a-network"
+    ],
+    "leads_to": []
+  },
+  "decoding": {
+    "id": "decoding",
+    "title": "Decoding: temperature, top-k and top-p",
+    "short": "Decoding",
+    "file": "lessons/genai/decoding.qmd",
+    "href": "lessons/genai/decoding.html",
+    "topic": "genai",
+    "status": "planned",
+    "summary": "How one probability table becomes a sentence, and why answers vary.",
+    "requires": [
+      "next-token-training"
+    ],
+    "helpful": [],
+    "leads_to": [
+      "agents",
+      "evaluating-llms",
+      "rag"
+    ]
+  },
+  "evaluating-llms": {
+    "id": "evaluating-llms",
+    "title": "Evaluating LLMs",
+    "short": "Evaluating LLMs",
+    "file": "lessons/genai/evaluating-llms.qmd",
+    "href": "lessons/genai/evaluating-llms.html",
+    "topic": "genai",
+    "status": "planned",
+    "summary": "How to tell whether a model that writes text is telling the truth.",
+    "requires": [
+      "decoding"
+    ],
+    "helpful": [
+      "rag",
+      "agents"
+    ],
+    "leads_to": []
+  },
+  "lora": {
+    "id": "lora",
+    "title": "Fine-tuning and LoRA",
+    "short": "Fine-tuning, LoRA",
+    "file": "lessons/genai/lora.qmd",
+    "href": "lessons/genai/lora.html",
+    "topic": "genai",
+    "status": "planned",
+    "summary": "Teaching a big model new habits by training two thin matrices.",
+    "requires": [
+      "next-token-training",
+      "matrix-multiply"
+    ],
+    "helpful": [],
+    "leads_to": []
+  },
+  "rag": {
+    "id": "rag",
+    "title": "Retrieval-augmented generation",
+    "short": "RAG",
+    "file": "lessons/genai/rag.qmd",
+    "href": "lessons/genai/rag.html",
+    "topic": "genai",
+    "status": "planned",
+    "summary": "Letting a model look things up before it answers, and cite what it found.",
+    "requires": [
+      "semantic-search",
+      "decoding"
+    ],
+    "helpful": [],
+    "leads_to": []
+  },
+  "rlhf-dpo": {
+    "id": "rlhf-dpo",
+    "title": "Alignment: RLHF and DPO",
+    "short": "RLHF and DPO",
+    "file": "lessons/genai/rlhf-dpo.qmd",
+    "href": "lessons/genai/rlhf-dpo.html",
+    "topic": "genai",
+    "status": "planned",
+    "summary": "Turning human preferences into a training signal.",
+    "requires": [
+      "next-token-training"
+    ],
+    "helpful": [],
+    "leads_to": []
+  },
+  "semantic-search": {
+    "id": "semantic-search",
+    "title": "Embeddings and semantic search",
+    "short": "Semantic search",
+    "file": "lessons/genai/semantic-search.qmd",
+    "href": "lessons/genai/semantic-search.html",
+    "topic": "genai",
+    "status": "planned",
+    "summary": "Finding documents by meaning instead of matching words.",
+    "requires": [
+      "tokens-embeddings"
+    ],
+    "helpful": [
+      "transformer-block"
+    ],
+    "leads_to": [
+      "rag"
+    ]
+  },
+  "dot-product": {
+    "id": "dot-product",
+    "title": "Vectors and the dot product",
+    "short": "Dot product",
+    "file": "lessons/linear-algebra/dot-product.qmd",
+    "href": "lessons/linear-algebra/dot-product.html",
+    "topic": "linear-algebra",
+    "status": "planned",
+    "summary": "How similar are two things? One number answers it.",
+    "requires": [],
+    "helpful": [],
+    "leads_to": [
+      "matrix-multiply",
+      "single-neuron",
+      "tokens-embeddings"
+    ]
+  },
+  "matrix-multiply": {
+    "id": "matrix-multiply",
+    "title": "Matrix multiply: many dot products at once",
+    "short": "Matrix multiply",
+    "file": "lessons/linear-algebra/matrix-multiply.qmd",
+    "href": "lessons/linear-algebra/matrix-multiply.html",
+    "topic": "linear-algebra",
+    "status": "published",
+    "summary": "One operation that scores every drone on every measure at the same time, and the engine inside every neural network.",
+    "requires": [
+      "dot-product"
+    ],
+    "helpful": [],
+    "leads_to": [
+      "lora",
+      "tensors",
+      "forward-pass",
+      "qkv-tensors"
+    ]
+  },
+  "tensors": {
+    "id": "tensors",
+    "title": "Tensors, shapes and broadcasting",
+    "short": "Tensors and shapes",
+    "file": "lessons/linear-algebra/tensors.qmd",
+    "href": "lessons/linear-algebra/tensors.html",
+    "topic": "linear-algebra",
+    "status": "planned",
+    "summary": "Matrices with more than two directions, and how to keep track of their shapes.",
+    "requires": [
+      "matrix-multiply"
+    ],
+    "helpful": [],
+    "leads_to": []
+  },
+  "activations": {
+    "id": "activations",
+    "title": "Activation functions",
+    "short": "Activations",
+    "file": "lessons/neural-nets/activations.qmd",
+    "href": "lessons/neural-nets/activations.html",
+    "topic": "neural-nets",
+    "status": "planned",
+    "summary": "Why networks need a bend, and what ReLU, sigmoid and tanh each do.",
+    "requires": [
+      "single-neuron"
+    ],
+    "helpful": [],
+    "leads_to": [
+      "forward-pass"
+    ]
+  },
+  "backpropagation": {
+    "id": "backpropagation",
+    "title": "Backpropagation",
+    "short": "Backpropagation",
+    "file": "lessons/neural-nets/backpropagation.qmd",
+    "href": "lessons/neural-nets/backpropagation.html",
+    "topic": "neural-nets",
+    "status": "planned",
+    "summary": "The chain rule, run backward through the network to blame each weight fairly.",
+    "requires": [
+      "gradient-descent"
+    ],
+    "helpful": [],
+    "leads_to": [
+      "train-a-network"
+    ]
+  },
+  "forward-pass": {
+    "id": "forward-pass",
+    "title": "Layers and the forward pass",
+    "short": "Forward pass",
+    "file": "lessons/neural-nets/forward-pass.qmd",
+    "href": "lessons/neural-nets/forward-pass.html",
+    "topic": "neural-nets",
+    "status": "planned",
+    "summary": "Stacking neurons into layers and following a batch of data through them.",
+    "requires": [
+      "activations",
+      "matrix-multiply"
+    ],
+    "helpful": [
+      "tensors"
+    ],
+    "leads_to": [
+      "loss-functions",
+      "rnns",
+      "transformer-block"
+    ]
+  },
+  "gradient-descent": {
+    "id": "gradient-descent",
+    "title": "Gradient descent and the learning rate",
+    "short": "Gradient descent",
+    "file": "lessons/neural-nets/gradient-descent.qmd",
+    "href": "lessons/neural-nets/gradient-descent.html",
+    "topic": "neural-nets",
+    "status": "planned",
+    "summary": "Walking downhill on the loss, one careful step at a time.",
+    "requires": [
+      "loss-functions",
+      "gradients"
+    ],
+    "helpful": [],
+    "leads_to": [
+      "backpropagation",
+      "overfitting"
+    ]
+  },
+  "loss-functions": {
+    "id": "loss-functions",
+    "title": "Loss functions",
+    "short": "Loss functions",
+    "file": "lessons/neural-nets/loss-functions.qmd",
+    "href": "lessons/neural-nets/loss-functions.html",
+    "topic": "neural-nets",
+    "status": "planned",
+    "summary": "One number for how wrong the network is, chosen to match the job.",
+    "requires": [
+      "forward-pass"
+    ],
+    "helpful": [
+      "softmax-cross-entropy"
+    ],
+    "leads_to": [
+      "gradient-descent",
+      "next-token-training"
+    ]
+  },
+  "overfitting": {
+    "id": "overfitting",
+    "title": "Overfitting and regularization",
+    "short": "Overfitting",
+    "file": "lessons/neural-nets/overfitting.qmd",
+    "href": "lessons/neural-nets/overfitting.html",
+    "topic": "neural-nets",
+    "status": "planned",
+    "summary": "When a network memorizes instead of learning, and the tools that stop it.",
+    "requires": [
+      "gradient-descent"
+    ],
+    "helpful": [],
+    "leads_to": [
+      "train-a-network"
+    ]
+  },
+  "single-neuron": {
+    "id": "single-neuron",
+    "title": "A single neuron",
+    "short": "Single neuron",
+    "file": "lessons/neural-nets/single-neuron.qmd",
+    "href": "lessons/neural-nets/single-neuron.html",
+    "topic": "neural-nets",
+    "status": "planned",
+    "summary": "A weighted vote plus a threshold: the smallest possible learned decision.",
+    "requires": [
+      "dot-product"
+    ],
+    "helpful": [],
+    "leads_to": [
+      "activations"
+    ]
+  },
+  "train-a-network": {
+    "id": "train-a-network",
+    "title": "Training a real network",
+    "short": "Train a network",
+    "file": "lessons/neural-nets/train-a-network.qmd",
+    "href": "lessons/neural-nets/train-a-network.html",
+    "topic": "neural-nets",
+    "status": "planned",
+    "summary": "Everything so far, in PyTorch, on real telemetry.",
+    "requires": [
+      "backpropagation",
+      "overfitting"
+    ],
+    "helpful": [],
+    "leads_to": [
+      "tiny-gpt"
+    ]
+  },
+  "softmax-cross-entropy": {
+    "id": "softmax-cross-entropy",
+    "title": "Softmax and cross-entropy",
+    "short": "Softmax, cross-entropy",
+    "file": "lessons/probability/softmax-cross-entropy.qmd",
+    "href": "lessons/probability/softmax-cross-entropy.html",
+    "topic": "probability",
+    "status": "planned",
+    "summary": "Turning scores into probabilities, and grading a forecast that was confident and wrong.",
+    "requires": [],
+    "helpful": [],
+    "leads_to": [
+      "attention-idea"
+    ]
+  },
+  "attention-idea": {
+    "id": "attention-idea",
+    "title": "Attention, the idea",
+    "short": "Attention idea",
+    "file": "lessons/transformers/attention-idea.qmd",
+    "href": "lessons/transformers/attention-idea.html",
+    "topic": "transformers",
+    "status": "planned",
+    "summary": "Every word looks at every other word and decides which ones matter.",
+    "requires": [
+      "tokens-embeddings",
+      "softmax-cross-entropy"
+    ],
+    "helpful": [
+      "rnns"
+    ],
+    "leads_to": [
+      "qkv-tensors"
+    ]
+  },
+  "heads-position": {
+    "id": "heads-position",
+    "title": "Multi-head attention and position",
+    "short": "Heads and position",
+    "file": "lessons/transformers/heads-position.qmd",
+    "href": "lessons/transformers/heads-position.html",
+    "topic": "transformers",
+    "status": "planned",
+    "summary": "Several attention patterns at once, and how the model knows word order.",
+    "requires": [
+      "qkv-tensors"
+    ],
+    "helpful": [],
+    "leads_to": [
+      "transformer-block"
+    ]
+  },
+  "next-token-training": {
+    "id": "next-token-training",
+    "title": "Training by next-token prediction",
+    "short": "Next-token training",
+    "file": "lessons/transformers/next-token-training.qmd",
+    "href": "lessons/transformers/next-token-training.html",
+    "topic": "transformers",
+    "status": "planned",
+    "summary": "How a language model learns from nothing but guessing the next word.",
+    "requires": [
+      "transformer-block",
+      "loss-functions"
+    ],
+    "helpful": [],
+    "leads_to": [
+      "decoding",
+      "lora",
+      "rlhf-dpo",
+      "tiny-gpt"
+    ]
+  },
+  "qkv-tensors": {
+    "id": "qkv-tensors",
+    "title": "Queries, keys and values as tensors",
+    "short": "Q, K, V tensors",
+    "file": "lessons/transformers/qkv-tensors.qmd",
+    "href": "lessons/transformers/qkv-tensors.html",
+    "topic": "transformers",
+    "status": "planned",
+    "summary": "The attention idea, written as four matrix steps you can watch.",
+    "requires": [
+      "attention-idea",
+      "matrix-multiply"
+    ],
+    "helpful": [
+      "tensors"
+    ],
+    "leads_to": [
+      "heads-position"
+    ]
+  },
+  "rnns": {
+    "id": "rnns",
+    "title": "Sequences, RNNs and why they forget",
+    "short": "RNNs and memory",
+    "file": "lessons/transformers/rnns.qmd",
+    "href": "lessons/transformers/rnns.html",
+    "topic": "transformers",
+    "status": "planned",
+    "summary": "Reading one word at a time, and why long documents defeat it.",
+    "requires": [
+      "forward-pass",
+      "tokens-embeddings"
+    ],
+    "helpful": [],
+    "leads_to": []
+  },
+  "tiny-gpt": {
+    "id": "tiny-gpt",
+    "title": "Build a tiny GPT",
+    "short": "Tiny GPT",
+    "file": "lessons/transformers/tiny-gpt.qmd",
+    "href": "lessons/transformers/tiny-gpt.html",
+    "topic": "transformers",
+    "status": "planned",
+    "summary": "A working language model you train yourself in a notebook.",
+    "requires": [
+      "next-token-training",
+      "train-a-network"
+    ],
+    "helpful": [],
+    "leads_to": []
+  },
+  "tokens-embeddings": {
+    "id": "tokens-embeddings",
+    "title": "Tokens and embeddings",
+    "short": "Tokens, embeddings",
+    "file": "lessons/transformers/tokens-embeddings.qmd",
+    "href": "lessons/transformers/tokens-embeddings.html",
+    "topic": "transformers",
+    "status": "planned",
+    "summary": "How text becomes numbers that know which words mean similar things.",
+    "requires": [
+      "dot-product"
+    ],
+    "helpful": [],
+    "leads_to": [
+      "semantic-search",
+      "attention-idea",
+      "rnns"
+    ]
+  },
+  "transformer-block": {
+    "id": "transformer-block",
+    "title": "The transformer block",
+    "short": "Transformer block",
+    "file": "lessons/transformers/transformer-block.qmd",
+    "href": "lessons/transformers/transformer-block.html",
+    "topic": "transformers",
+    "status": "planned",
+    "summary": "Attention, feed-forward, residuals and normalization, assembled into one layer.",
+    "requires": [
+      "heads-position",
+      "forward-pass"
+    ],
+    "helpful": [],
+    "leads_to": [
+      "classic-nlp",
+      "next-token-training"
+    ]
+  }
+}

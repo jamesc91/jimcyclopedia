@@ -1,0 +1,16 @@
+---
+title: Multi-head attention and position
+short-title: Heads and position
+description: Several attention patterns at once, and how the model knows word order.
+lesson-id: heads-position
+status: planned
+requires:
+- qkv-tensors
+helpful: []
+---
+
+## What this lesson will cover
+
+**Real-world example:** One head tracks grammar, another tracks numbers.
+
+**Signature visual:** Heads side by side; sine-wave position codes you can scrub through.

@@ -1,0 +1,17 @@
+---
+title: Training by next-token prediction
+short-title: Next-token training
+description: How a language model learns from nothing but guessing the next word.
+lesson-id: next-token-training
+status: planned
+requires:
+- transformer-block
+- loss-functions
+helpful: []
+---
+
+## What this lesson will cover
+
+**Real-world example:** Guessing the next word of a pilot's radio call.
+
+**Signature visual:** Probability bars for the next token, sharpening as training proceeds.

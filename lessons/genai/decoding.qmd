@@ -1,0 +1,16 @@
+---
+title: 'Decoding: temperature, top-k and top-p'
+short-title: Decoding
+description: How one probability table becomes a sentence, and why answers vary.
+lesson-id: decoding
+status: planned
+requires:
+- next-token-training
+helpful: []
+---
+
+## What this lesson will cover
+
+**Real-world example:** Why the same prompt gives different answers.
+
+**Signature visual:** Sliders reshape the next-token distribution and resample the output live.

@@ -1,0 +1,63 @@
+project:
+  type: website
+  output-dir: _site
+  # Reads every lesson's header, checks the prerequisite graph, and writes
+  # the sidebar, the lesson index and the dependency map into _generated/.
+  pre-render: scripts/build_index.py
+  render:
+    - "*.qmd"
+    - "lessons/**/*.qmd"
+    - "!templates/"        # the lesson template is a starting point, not a page
+  resources:
+    - shared/
+
+# The sidebar is generated from paths/*.yml by the pre-render script.
+metadata-files:
+  - _generated/sidebar.yml
+
+website:
+  title: "Jimcyclopedia"             # change the site name here
+  description: "Engineering, math and machine learning, taught with pictures you can play with."
+  site-url: "https://visual-lessons.example.com"   # set once you have a domain
+  repo-url: "https://github.com/jamesc91/jimcyclopedia"
+  page-navigation: true
+  search:
+    location: navbar
+    type: overlay
+  navbar:
+    left:
+      - text: "Lessons"
+        href: index.qmd
+      - text: "Map"
+        href: map.qmd
+      - text: "About"
+        href: about.qmd
+    right:
+      - icon: github
+        href: "https://github.com/jamesc91/jimcyclopedia"
+        aria-label: GitHub
+      - icon: linkedin
+        href: "https://www.linkedin.com/in/james-robert-cook"
+        aria-label: LinkedIn
+  page-footer:
+    left: "Built with Quarto. Lessons and code are open source."
+
+format:
+  html:
+    theme:
+      light: [cosmo, styles/light.scss]
+      dark: [cosmo, styles/dark.scss]
+    css: shared/widgets/widgets.css
+    include-in-header:
+      - text: |
+          <script type="module" src="/shared/widgets/matmul-stepper.js"></script>
+          <script type="module" src="/shared/widgets/py-cell.js"></script>
+    filters:
+      - filters/prereqs.lua
+    toc: true
+    toc-title: "On this page"
+    number-sections: false
+    code-copy: true
+    smooth-scroll: true
+    mermaid:
+      theme: neutral

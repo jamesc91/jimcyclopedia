@@ -1,0 +1,280 @@
+---
+title: "Matrix multiply: many dot products at once"
+short-title: "Matrix multiply"
+description: "One operation that scores every drone on every measure at the same time, and the engine inside every neural network."
+lesson-id: matrix-multiply
+status: published
+requires: [dot-product]
+helpful: []
+---
+
+::: {.callout-tip collapse="true"}
+## Quick refresher: the dot product
+
+Multiply two lists of numbers position by position, then add the results.
+For a drone with readings (22.8, 41) and weights (1.0, −0.1):
+22.8 × 1.0 + 41 × (−0.1) = 18.7. One weighted score from one list of readings.
+:::
+
+## The problem
+
+Before every flight, a ground crew checks a fleet of drones. Each drone reports
+four readings: battery voltage, motor temperature, wind at the launch site and
+payload weight. From those four numbers the crew wants two scores per drone:
+
+- **Power margin:** how much energy headroom the flight has. High battery helps; heat, wind and payload eat into it.
+- **Handling risk:** how hard the drone will be to control. Wind and payload push it up.
+
+Each score is a weighted sum of the four readings, which is a
+[dot product](dot-product.qmd). Three drones and two scores means
+six dot products. A real fleet of 200 drones scored on 16 measures needs 3,200,
+and a neural network layer does the same thing thousands of times per second.
+Matrix multiplication is the bookkeeping that does all of them at once.
+
+| Drone | Battery (V) | Motor temp (°C) | Wind (m/s) | Payload (kg) |
+|:------|------------:|----------------:|-----------:|-------------:|
+| A     | 22.8        | 41              | 6          | 1.2          |
+| B     | 21.1        | 55              | 9          | 2.0          |
+| C     | 23.4        | 38              | 3          | 0.5          |
+
+: The readings, one row per drone {.striped}
+
+The weights say how much each reading counts toward each score (they are
+illustrative, not from a real flight manual):
+
+| Reading      | Power margin | Handling risk |
+|:-------------|-------------:|--------------:|
+| Battery      | 1.00         | 0.00          |
+| Motor temp   | −0.10        | 0.02          |
+| Wind         | −0.30        | 0.50          |
+| Payload      | −2.00        | 0.80          |
+
+: The weights, one column per score {.striped}
+
+## The picture
+
+Stack the readings into a matrix **X** with one row per drone, and the weights
+into a matrix **W** with one column per score. Every score is one row of X
+dotted with one column of W. The only rule is that the row and the column must
+be the same length, because each reading needs a weight.
+
+```{=html}
+<figure class="vl-fig">
+<svg viewBox="0 0 540 132" role="img" aria-label="Shapes: 3 by 4 times 4 by 2 gives 3 by 2. The inner 4s must match; the outer numbers give the result.">
+  <path class="rule" d="M122 46 Q180 6 238 46"/>
+  <text class="amber" x="180" y="18" text-anchor="middle" font-size="13" font-weight="600">must match</text>
+  <g font-size="30" font-weight="500" text-anchor="middle">
+    <text class="ink" x="40" y="74">(</text>
+    <text class="blue" x="62" y="74">3</text>
+    <text class="ink" x="92" y="74">×</text>
+    <text class="blue" x="122" y="74">4</text>
+    <text class="ink" x="142" y="74">)</text>
+    <text class="ink" x="180" y="74">·</text>
+    <text class="ink" x="216" y="74">(</text>
+    <text class="amber" x="238" y="74">4</text>
+    <text class="ink" x="268" y="74">×</text>
+    <text class="amber" x="298" y="74">2</text>
+    <text class="ink" x="318" y="74">)</text>
+    <text class="ink" x="356" y="74">=</text>
+    <text class="ink" x="392" y="74">(</text>
+    <text class="blue" x="414" y="74">3</text>
+    <text class="ink" x="444" y="74">×</text>
+    <text class="amber" x="474" y="74">2</text>
+    <text class="ink" x="494" y="74">)</text>
+  </g>
+  <g font-size="12.5" text-anchor="middle">
+    <text class="muted" x="92" y="104">X: 3 drones,</text>
+    <text class="muted" x="92" y="121">4 readings each</text>
+    <text class="muted" x="268" y="104">W: 4 weights,</text>
+    <text class="muted" x="268" y="121">for 2 scores</text>
+    <text class="muted" x="444" y="104">Result: 3 drones,</text>
+    <text class="muted" x="444" y="121">2 scores each</text>
+  </g>
+</svg>
+<figcaption>Write the shapes side by side. The two inner numbers must match; the two outer numbers are the shape of the answer.</figcaption>
+</figure>
+```
+
+## Play with it
+
+The weights sit above the answer and the readings sit to its left, so every
+answer cell lands exactly where its row and its column cross. Step through the
+six cells, or click any empty answer cell to jump to it.
+
+```{=html}
+<matmul-stepper
+  a='[[22.8,41,6,1.2],[21.1,55,9,2.0],[23.4,38,3,0.5]]'
+  b='[[1.0,0.0],[-0.10,0.02],[-0.30,0.50],[-2.0,0.80]]'
+  a-label="Readings X" b-label="Weights W" c-label="Scores XW"
+  row-names='["Drone A","Drone B","Drone C"]'
+  inner-names='["Battery","Motor temp","Wind","Payload"]'
+  col-names='["Power margin","Handling risk"]'
+  decimals="2"></matmul-stepper>
+```
+
+Notice what stays highlighted as you step across a row: the same drone's
+readings are reused for every score. Step down a column and the same weights are
+reused for every drone. That reuse is why GPUs can do this so fast.
+
+## The math, minimal
+
+The cell in row *i* and column *j* of the answer is row *i* of X dotted with
+column *j* of W:
+
+$$
+(XW)_{ij} \;=\; \sum_{k=1}^{n} X_{ik}\, W_{kj}
+$$
+
+- **Shapes:** an (m × n) matrix times an (n × p) matrix gives an (m × p) matrix.
+  Here m = 3 drones, n = 4 readings and p = 2 scores.
+- **Cost:** every answer cell takes n multiplications, so the whole product takes
+  m · n · p of them. For the fleet: 3 × 4 × 2 = 24.
+- **Order matters:** XW and WX are different. Here WX is not even defined, because
+  (4 × 2) · (3 × 4) has inner sizes 2 and 3.
+
+## Worked example
+
+Drone B's power margin is row B of X dotted with the power-margin column of W:
+
+| Reading    | Value | × Weight | = Contribution |
+|:-----------|------:|---------:|---------------:|
+| Battery    | 21.1  | 1.00     | 21.1           |
+| Motor temp | 55    | −0.10    | −5.5           |
+| Wind       | 9     | −0.30    | −2.7           |
+| Payload    | 2.0   | −2.00    | −4.0           |
+| **Total**  |       |          | **8.9**        |
+
+Drone B has the lowest power margin of the three (A scores 14.5, C scores 17.7),
+and you can see why: the hottest motors and the heaviest payload. Its handling
+risk, 7.2, is also the highest, almost all of it from the 9 m/s wind.
+
+## Run the code
+
+The `@` operator in NumPy is matrix multiplication. Edit anything and press
+**Run** (or Ctrl+Enter). Try raising Drone B's wind to 12 m/s and see which
+scores move.
+
+```{=html}
+<py-cell packages="numpy"><script type="text/x-python">
+import numpy as np
+
+# One row per drone: battery (V), motor temp (C), wind (m/s), payload (kg)
+X = np.array([[22.8, 41, 6, 1.2],
+              [21.1, 55, 9, 2.0],
+              [23.4, 38, 3, 0.5]])
+
+# One column per score: power margin, handling risk
+W = np.array([[ 1.00, 0.00],
+              [-0.10, 0.02],
+              [-0.30, 0.50],
+              [-2.00, 0.80]])
+
+scores = X @ W
+print("shapes:", X.shape, "@", W.shape, "->", scores.shape)
+print(scores.round(2))
+print("Drone B power margin, one dot product:", round(X[1] @ W[:, 0], 2))
+</script></py-cell>
+```
+
+Now scale up. The cell below scores 500 drones on 64 readings for 32 measures,
+first with plain Python loops (one multiplication at a time) and then with `@`.
+Both give the same answer; only the speed differs.
+
+```{=html}
+<py-cell packages="numpy"><script type="text/x-python">
+import time
+import numpy as np
+
+rng = np.random.default_rng(0)
+fleet = rng.normal(size=(500, 64))    # 500 drones, 64 readings each
+weights = rng.normal(size=(64, 32))   # 32 scores
+
+start = time.perf_counter()
+loops = [[sum(fleet[i, k] * weights[k, j] for k in range(64))
+          for j in range(32)] for i in range(500)]
+t_loop = time.perf_counter() - start
+
+start = time.perf_counter()
+fast = fleet @ weights
+t_fast = time.perf_counter() - start
+
+print(f"multiplications: {500 * 64 * 32:,}")
+print(f"Python loops: {t_loop:.3f} s")
+print(f"numpy @:      {t_fast:.5f} s  ({t_loop / t_fast:,.0f}x faster)")
+print("same answer:", np.allclose(loops, fast))
+</script></py-cell>
+```
+
+One last picture: the three matrices as heat maps. Colour shows size, so you
+can see which readings and weights drive each score.
+
+```{=html}
+<py-cell packages="numpy,matplotlib"><script type="text/x-python">
+import numpy as np
+import matplotlib.pyplot as plt
+
+X = np.array([[22.8, 41, 6, 1.2], [21.1, 55, 9, 2.0], [23.4, 38, 3, 0.5]])
+W = np.array([[1.0, 0.0], [-0.10, 0.02], [-0.30, 0.50], [-2.0, 0.80]])
+
+fig, axes = plt.subplots(1, 3, figsize=(9, 3),
+                         gridspec_kw={"width_ratios": [4, 2, 2]})
+for ax, M, title in zip(axes, [X, W, X @ W],
+                        ["X  (3 x 4)", "W  (4 x 2)", "X @ W  (3 x 2)"]):
+    ax.imshow(M, cmap="Blues" if M is X else "PuOr")
+    for (r, c), v in np.ndenumerate(M):
+        ax.text(c, r, f"{v:g}", ha="center", va="center", fontsize=9)
+    ax.set_title(title)
+    ax.set_xticks([]); ax.set_yticks([])
+plt.tight_layout()
+</script></py-cell>
+```
+
+## Where you'll see it
+
+- **Every neural network layer.** A batch of inputs, shape (batch × inputs),
+  times a weight matrix, shape (inputs × outputs). The
+  [forward pass](../neural-nets/forward-pass.qmd) lesson is this lesson
+  applied layer after layer.
+- **Attention in transformers.** Comparing every word in a sentence with every
+  other word is one matrix multiply, Q times K-transposed
+  ([Q, K and V as tensors](../transformers/qkv-tensors.qmd)).
+- **Navigation and graphics.** Rotating 10,000 points from a drone camera's frame
+  into the world frame is one (10,000 × 3) · (3 × 3) multiply.
+- **Finance.** Daily returns for many portfolios: (days × assets) times
+  (assets × portfolios) gives every portfolio's return on every day.
+
+## Check yourself
+
+**1.** A batch of 64 images, each flattened to 128 numbers, goes through a layer
+with 10 outputs. What shapes are the weight matrix and the result?
+
+::: {.callout-note collapse="true" appearance="minimal"}
+## Answer
+Weights (128 × 10). Result (64 × 10): one row per image, one column per output.
+:::
+
+**2.** Can you multiply a (3 × 4) matrix by a (3 × 2) matrix?
+
+::: {.callout-note collapse="true" appearance="minimal"}
+## Answer
+No. The inner sizes are 4 and 3. Each row has 4 numbers but each column has
+only 3, so there is nothing to pair the fourth number with.
+:::
+
+**3.** Which cell of the result holds Drone C's handling risk, and which two
+things are dotted together to get it?
+
+::: {.callout-note collapse="true" appearance="minimal"}
+## Answer
+Row 3, column 2. Drone C's row of readings dotted with the handling-risk column
+of weights: 23.4 × 0 + 38 × 0.02 + 3 × 0.5 + 0.5 × 0.8 = 2.66.
+:::
+
+**4.** Doubling the number of drones doubles the work. What happens to the
+work if you double the number of readings per drone instead?
+
+::: {.callout-note collapse="true" appearance="minimal"}
+## Answer
+It also doubles. The cost is m · n · p, so each of the three sizes scales it
+linearly. Doubling all three costs 8 times as much.
+:::

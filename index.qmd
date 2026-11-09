@@ -1,0 +1,45 @@
+---
+pagetitle: "Jimcyclopedia"
+toc: false
+---
+
+```{=html}
+<section class="vl-hero">
+  <div>
+    <div class="vl-hero-title" role="heading" aria-level="1">Engineering and machine learning, with pictures you can play with</div>
+    <p>Each lesson starts from a real problem, like a drone preflight check or a
+    bank's policy assistant, and builds the math you need to solve it. Every idea
+    gets a picture, and the hard ones you can step through.</p>
+    <a class="vl-cta" href="lessons/linear-algebra/matrix-multiply.html">Start with matrix multiply</a>
+  </div>
+  <matmul-stepper class="mm-compact"
+    a='[[22.8,6],[21.1,9]]' b='[[1.0,0.0],[-0.3,0.5]]'
+    a-label="Readings" b-label="Weights" c-label="Scores"
+    row-names='["Drone A","Drone B"]' inner-names='["Battery","Wind"]'
+    col-names='["Power","Handling"]' decimals="2"></matmul-stepper>
+</section>
+```
+
+## Why "Jimcyclopedia"?
+
+I've spent a long time as a student: a BS, two MS degrees, an MBA and a PhD.
+Looking back, the handful of professors who did an amazing job all taught in a
+way I was receptive to. I learn best from pictures, and from real-world examples
+I can tie back to things I already know.
+
+Most lessons I find offer good visuals or good examples, and often neither. With
+help from large language models, I can now build the lessons I wish I'd had: an
+encyclopedia of topics I find interesting, including machine learning, deep
+learning, reinforcement learning, automotive engineering, finance, math and
+controls. I use it to refresh my memory and to prepare for quantitative job
+interviews.
+
+If you've found this page, I hope you enjoy it and find it helpful.
+
+## Neural networks to GenAI
+
+A path from a single neuron to evaluating LLM agents. You don't have to take it
+in order: each lesson lists only what it builds on, and the
+[lesson map](map.qmd) shows the whole picture.
+
+{{< include _generated/path-nn-to-genai.qmd >}}

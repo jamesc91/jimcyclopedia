@@ -1,0 +1,17 @@
+---
+title: Sequences, RNNs and why they forget
+short-title: RNNs and memory
+description: Reading one word at a time, and why long documents defeat it.
+lesson-id: rnns
+status: planned
+requires:
+- forward-pass
+- tokens-embeddings
+helpful: []
+---
+
+## What this lesson will cover
+
+**Real-world example:** Reading a 40-page contract one word at a time.
+
+**Signature visual:** A memory bar fading as the sequence gets longer.

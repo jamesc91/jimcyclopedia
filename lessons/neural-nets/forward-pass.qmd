@@ -1,0 +1,18 @@
+---
+title: Layers and the forward pass
+short-title: Forward pass
+description: Stacking neurons into layers and following a batch of data through them.
+lesson-id: forward-pass
+status: planned
+requires:
+- activations
+- matrix-multiply
+helpful:
+- tensors
+---
+
+## What this lesson will cover
+
+**Real-world example:** The full preflight check: 6 sensors, 2 hidden layers.
+
+**Signature visual:** Data flowing through the network, each layer's matrix multiply animated with its shapes.

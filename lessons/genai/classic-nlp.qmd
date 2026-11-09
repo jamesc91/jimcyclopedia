@@ -1,0 +1,18 @@
+---
+title: Classic NLP with transformers
+short-title: Classic NLP
+description: Classification and entity extraction, the workhorse NLP inside every
+  bank.
+lesson-id: classic-nlp
+status: planned
+requires:
+- transformer-block
+helpful:
+- train-a-network
+---
+
+## What this lesson will cover
+
+**Real-world example:** Routing bank complaints; pulling amounts and dates from documents.
+
+**Signature visual:** Text with predicted labels, highlighted entities and token importance.

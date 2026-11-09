@@ -1,0 +1,19 @@
+---
+title: "About"
+toc: false
+---
+
+I'm James Cook, a controls engineer. My PhD applied deep and reinforcement
+learning to engine modelling and optimization, and I've spent most of my career
+on UAV flight controls and drone programs.
+
+I learn best from pictures and real examples, and most material on machine
+learning offers one or the other, rarely both. This site is my attempt to fix
+that: every lesson starts from a real problem, every idea gets a picture, and the
+hardest ideas, like how tensors move through a transformer, get a picture you can
+step through.
+
+Everything here is open source. If something is wrong or unclear, open an issue
+on [GitHub](https://github.com/jamesc91/jimcyclopedia).
+
+[LinkedIn](https://www.linkedin.com/in/james-robert-cook)

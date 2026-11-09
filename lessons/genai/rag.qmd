@@ -1,0 +1,17 @@
+---
+title: Retrieval-augmented generation
+short-title: RAG
+description: Letting a model look things up before it answers, and cite what it found.
+lesson-id: rag
+status: planned
+requires:
+- semantic-search
+- decoding
+helpful: []
+---
+
+## What this lesson will cover
+
+**Real-world example:** A policy assistant for bank staff.
+
+**Signature visual:** The pipeline animated per question: chunks retrieved, prompt built, answer cited.

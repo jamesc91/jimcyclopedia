@@ -1,0 +1,18 @@
+---
+title: Attention, the idea
+short-title: Attention idea
+description: Every word looks at every other word and decides which ones matter.
+lesson-id: attention-idea
+status: planned
+requires:
+- tokens-embeddings
+- softmax-cross-entropy
+helpful:
+- rnns
+---
+
+## What this lesson will cover
+
+**Real-world example:** Working out what "it" refers to in a sentence.
+
+**Signature visual:** A heat map: click any word to see how much it attends to every other.

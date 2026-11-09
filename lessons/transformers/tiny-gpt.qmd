@@ -1,0 +1,17 @@
+---
+title: Build a tiny GPT
+short-title: Tiny GPT
+description: A working language model you train yourself in a notebook.
+lesson-id: tiny-gpt
+status: planned
+requires:
+- next-token-training
+- train-a-network
+helpful: []
+---
+
+## What this lesson will cover
+
+**Real-world example:** A character-level model trained on public-domain text.
+
+**Signature visual:** Sample text improving every few hundred steps (Colab notebook).

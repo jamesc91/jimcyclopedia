@@ -1,0 +1,18 @@
+# A path is just an ordered reading list. Lessons live in lessons/ and can
+# appear in any number of paths. To add a lesson to this path, add its
+# lesson-id below; nothing else needs to change.
+id: nn-to-genai
+title: "Neural networks to GenAI"
+sections:
+  - title: "Math foundations"
+    blurb: "Short lessons that make every later picture readable. Take them as you need them."
+    lessons: [dot-product, matrix-multiply, tensors, gradients, softmax-cross-entropy]
+  - title: "Neural networks"
+    blurb: "One drone preflight check grows from a single neuron into a trained network."
+    lessons: [single-neuron, activations, forward-pass, loss-functions, gradient-descent, backpropagation, overfitting, train-a-network]
+  - title: "Transformers"
+    blurb: "One sentence follows you through: \"The bank raised the fee because it lost money.\""
+    lessons: [tokens-embeddings, rnns, attention-idea, qkv-tensors, heads-position, transformer-block, next-token-training, tiny-gpt]
+  - title: "NLP and GenAI"
+    blurb: "The systems that banks and tech companies actually deploy, and how to tell if they work."
+    lessons: [classic-nlp, decoding, lora, rlhf-dpo, semantic-search, rag, agents, evaluating-llms]

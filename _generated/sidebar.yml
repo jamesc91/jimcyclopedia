@@ -1,0 +1,71 @@
+website:
+  sidebar:
+    style: docked
+    search: false
+    contents:
+    - section: Math foundations
+      contents:
+      - href: lessons/linear-algebra/dot-product.qmd
+        text: Dot product [soon]{.soon}
+      - href: lessons/linear-algebra/matrix-multiply.qmd
+        text: Matrix multiply
+      - href: lessons/linear-algebra/tensors.qmd
+        text: Tensors and shapes [soon]{.soon}
+      - href: lessons/calculus/gradients.qmd
+        text: Gradients [soon]{.soon}
+      - href: lessons/probability/softmax-cross-entropy.qmd
+        text: Softmax, cross-entropy [soon]{.soon}
+    - section: Neural networks
+      contents:
+      - href: lessons/neural-nets/single-neuron.qmd
+        text: Single neuron [soon]{.soon}
+      - href: lessons/neural-nets/activations.qmd
+        text: Activations [soon]{.soon}
+      - href: lessons/neural-nets/forward-pass.qmd
+        text: Forward pass [soon]{.soon}
+      - href: lessons/neural-nets/loss-functions.qmd
+        text: Loss functions [soon]{.soon}
+      - href: lessons/neural-nets/gradient-descent.qmd
+        text: Gradient descent [soon]{.soon}
+      - href: lessons/neural-nets/backpropagation.qmd
+        text: Backpropagation [soon]{.soon}
+      - href: lessons/neural-nets/overfitting.qmd
+        text: Overfitting [soon]{.soon}
+      - href: lessons/neural-nets/train-a-network.qmd
+        text: Train a network [soon]{.soon}
+    - section: Transformers
+      contents:
+      - href: lessons/transformers/tokens-embeddings.qmd
+        text: Tokens, embeddings [soon]{.soon}
+      - href: lessons/transformers/rnns.qmd
+        text: RNNs and memory [soon]{.soon}
+      - href: lessons/transformers/attention-idea.qmd
+        text: Attention idea [soon]{.soon}
+      - href: lessons/transformers/qkv-tensors.qmd
+        text: Q, K, V tensors [soon]{.soon}
+      - href: lessons/transformers/heads-position.qmd
+        text: Heads and position [soon]{.soon}
+      - href: lessons/transformers/transformer-block.qmd
+        text: Transformer block [soon]{.soon}
+      - href: lessons/transformers/next-token-training.qmd
+        text: Next-token training [soon]{.soon}
+      - href: lessons/transformers/tiny-gpt.qmd
+        text: Tiny GPT [soon]{.soon}
+    - section: NLP and GenAI
+      contents:
+      - href: lessons/genai/classic-nlp.qmd
+        text: Classic NLP [soon]{.soon}
+      - href: lessons/genai/decoding.qmd
+        text: Decoding [soon]{.soon}
+      - href: lessons/genai/lora.qmd
+        text: Fine-tuning, LoRA [soon]{.soon}
+      - href: lessons/genai/rlhf-dpo.qmd
+        text: RLHF and DPO [soon]{.soon}
+      - href: lessons/genai/semantic-search.qmd
+        text: Semantic search [soon]{.soon}
+      - href: lessons/genai/rag.qmd
+        text: RAG [soon]{.soon}
+      - href: lessons/genai/agents.qmd
+        text: Agents [soon]{.soon}
+      - href: lessons/genai/evaluating-llms.qmd
+        text: Evaluating LLMs [soon]{.soon}

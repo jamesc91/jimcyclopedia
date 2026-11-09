@@ -1,0 +1,17 @@
+---
+title: Backpropagation
+short-title: Backpropagation
+description: The chain rule, run backward through the network to blame each weight
+  fairly.
+lesson-id: backpropagation
+status: planned
+requires:
+- gradient-descent
+helpful: []
+---
+
+## What this lesson will cover
+
+**Real-world example:** Which sensor weight caused a bad go call?.
+
+**Signature visual:** A tiny network where you step the gradient backward node by node.

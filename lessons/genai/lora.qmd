@@ -1,0 +1,17 @@
+---
+title: Fine-tuning and LoRA
+short-title: Fine-tuning, LoRA
+description: Teaching a big model new habits by training two thin matrices.
+lesson-id: lora
+status: planned
+requires:
+- next-token-training
+- matrix-multiply
+helpful: []
+---
+
+## What this lesson will cover
+
+**Real-world example:** Adapting a model to aviation maintenance language.
+
+**Signature visual:** A big frozen matrix plus two thin trainable ones, with parameter counts.

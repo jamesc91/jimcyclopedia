@@ -1,0 +1,17 @@
+---
+title: Embeddings and semantic search
+short-title: Semantic search
+description: Finding documents by meaning instead of matching words.
+lesson-id: semantic-search
+status: planned
+requires:
+- tokens-embeddings
+helpful:
+- transformer-block
+---
+
+## What this lesson will cover
+
+**Real-world example:** Finding past maintenance reports like this one.
+
+**Signature visual:** A map of documents; type a query and watch the nearest neighbours light up.

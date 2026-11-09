@@ -1,0 +1,17 @@
+---
+title: Training a real network
+short-title: Train a network
+description: Everything so far, in PyTorch, on real telemetry.
+lesson-id: train-a-network
+status: planned
+requires:
+- backpropagation
+- overfitting
+helpful: []
+---
+
+## What this lesson will cover
+
+**Real-world example:** Predicting remaining flight time from telemetry.
+
+**Signature visual:** A live loss curve during training (Colab notebook).

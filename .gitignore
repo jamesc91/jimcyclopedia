@@ -1,0 +1,12 @@
+_site/
+.quarto/
+/.luarc.json
+__pycache__/
+.venv/
+.wrangler/
+node_modules/
+.DS_Store
+# _generated/ is committed on purpose: Quarto needs it to exist before it starts.
+
+/.quarto/
+**/*.quarto_ipynb

@@ -1,0 +1,24 @@
+/*-- scss:defaults --*/
+$web-font-path: "https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap";
+$font-family-sans-serif: "Source Serif 4", Georgia, serif;
+$headings-font-family: "IBM Plex Sans", system-ui, sans-serif;
+$font-family-monospace: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+$headings-font-weight: 600;
+
+$body-bg: #12171E;
+$body-color: #E4E9EF;
+$primary: #6EA2F0;
+$secondary: #9AA6B4;
+$link-color: #8DB6F4;
+$navbar-bg: #19202A;
+$navbar-fg: #E4E9EF;
+$navbar-hl: #8DB6F4;
+$footer-bg: #12171E;
+$code-color: #E4E9EF;
+$code-bg: #1F2833;
+$border-color: #2A3441;
+$callout-color-note: #6EA2F0;
+$callout-color-tip: #5CC08F;
+
+/*-- scss:rules --*/
+body { font-size: 1.07rem; line-height: 1.7; }

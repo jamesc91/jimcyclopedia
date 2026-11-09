@@ -1,0 +1,89 @@
+### Math foundations
+
+Short lessons that make every later picture readable. Take them as you need them.
+
+::: {.path-list}
+
+- [Vectors and the dot product](lessons/linear-algebra/dot-product.qmd){.planned} [coming soon]{.soon}  
+  How similar are two things? One number answers it.
+- [Matrix multiply: many dot products at once](lessons/linear-algebra/matrix-multiply.qmd){.published}  
+  One operation that scores every drone on every measure at the same time, and the engine inside every neural network.
+- [Tensors, shapes and broadcasting](lessons/linear-algebra/tensors.qmd){.planned} [coming soon]{.soon}  
+  Matrices with more than two directions, and how to keep track of their shapes.
+- [Derivatives, gradients and the chain rule](lessons/calculus/gradients.qmd){.planned} [coming soon]{.soon}  
+  Which way is downhill, and how fast, when many knobs move at once.
+- [Softmax and cross-entropy](lessons/probability/softmax-cross-entropy.qmd){.planned} [coming soon]{.soon}  
+  Turning scores into probabilities, and grading a forecast that was confident and wrong.
+:::
+
+### Neural networks
+
+One drone preflight check grows from a single neuron into a trained network.
+
+::: {.path-list}
+
+- [A single neuron](lessons/neural-nets/single-neuron.qmd){.planned} [coming soon]{.soon}  
+  A weighted vote plus a threshold: the smallest possible learned decision.
+- [Activation functions](lessons/neural-nets/activations.qmd){.planned} [coming soon]{.soon}  
+  Why networks need a bend, and what ReLU, sigmoid and tanh each do.
+- [Layers and the forward pass](lessons/neural-nets/forward-pass.qmd){.planned} [coming soon]{.soon}  
+  Stacking neurons into layers and following a batch of data through them.
+- [Loss functions](lessons/neural-nets/loss-functions.qmd){.planned} [coming soon]{.soon}  
+  One number for how wrong the network is, chosen to match the job.
+- [Gradient descent and the learning rate](lessons/neural-nets/gradient-descent.qmd){.planned} [coming soon]{.soon}  
+  Walking downhill on the loss, one careful step at a time.
+- [Backpropagation](lessons/neural-nets/backpropagation.qmd){.planned} [coming soon]{.soon}  
+  The chain rule, run backward through the network to blame each weight fairly.
+- [Overfitting and regularization](lessons/neural-nets/overfitting.qmd){.planned} [coming soon]{.soon}  
+  When a network memorizes instead of learning, and the tools that stop it.
+- [Training a real network](lessons/neural-nets/train-a-network.qmd){.planned} [coming soon]{.soon}  
+  Everything so far, in PyTorch, on real telemetry.
+:::
+
+### Transformers
+
+One sentence follows you through: "The bank raised the fee because it lost money."
+
+::: {.path-list}
+
+- [Tokens and embeddings](lessons/transformers/tokens-embeddings.qmd){.planned} [coming soon]{.soon}  
+  How text becomes numbers that know which words mean similar things.
+- [Sequences, RNNs and why they forget](lessons/transformers/rnns.qmd){.planned} [coming soon]{.soon}  
+  Reading one word at a time, and why long documents defeat it.
+- [Attention, the idea](lessons/transformers/attention-idea.qmd){.planned} [coming soon]{.soon}  
+  Every word looks at every other word and decides which ones matter.
+- [Queries, keys and values as tensors](lessons/transformers/qkv-tensors.qmd){.planned} [coming soon]{.soon}  
+  The attention idea, written as four matrix steps you can watch.
+- [Multi-head attention and position](lessons/transformers/heads-position.qmd){.planned} [coming soon]{.soon}  
+  Several attention patterns at once, and how the model knows word order.
+- [The transformer block](lessons/transformers/transformer-block.qmd){.planned} [coming soon]{.soon}  
+  Attention, feed-forward, residuals and normalization, assembled into one layer.
+- [Training by next-token prediction](lessons/transformers/next-token-training.qmd){.planned} [coming soon]{.soon}  
+  How a language model learns from nothing but guessing the next word.
+- [Build a tiny GPT](lessons/transformers/tiny-gpt.qmd){.planned} [coming soon]{.soon}  
+  A working language model you train yourself in a notebook.
+:::
+
+### NLP and GenAI
+
+The systems that banks and tech companies actually deploy, and how to tell if they work.
+
+::: {.path-list}
+
+- [Classic NLP with transformers](lessons/genai/classic-nlp.qmd){.planned} [coming soon]{.soon}  
+  Classification and entity extraction, the workhorse NLP inside every bank.
+- [Decoding: temperature, top-k and top-p](lessons/genai/decoding.qmd){.planned} [coming soon]{.soon}  
+  How one probability table becomes a sentence, and why answers vary.
+- [Fine-tuning and LoRA](lessons/genai/lora.qmd){.planned} [coming soon]{.soon}  
+  Teaching a big model new habits by training two thin matrices.
+- [Alignment: RLHF and DPO](lessons/genai/rlhf-dpo.qmd){.planned} [coming soon]{.soon}  
+  Turning human preferences into a training signal.
+- [Embeddings and semantic search](lessons/genai/semantic-search.qmd){.planned} [coming soon]{.soon}  
+  Finding documents by meaning instead of matching words.
+- [Retrieval-augmented generation](lessons/genai/rag.qmd){.planned} [coming soon]{.soon}  
+  Letting a model look things up before it answers, and cite what it found.
+- [Agents and tool use](lessons/genai/agents.qmd){.planned} [coming soon]{.soon}  
+  An LLM in a loop that can act, and the controls that keep it safe.
+- [Evaluating LLMs](lessons/genai/evaluating-llms.qmd){.planned} [coming soon]{.soon}  
+  How to tell whether a model that writes text is telling the truth.
+:::

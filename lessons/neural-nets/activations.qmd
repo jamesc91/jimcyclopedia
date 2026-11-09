@@ -1,0 +1,16 @@
+---
+title: Activation functions
+short-title: Activations
+description: Why networks need a bend, and what ReLU, sigmoid and tanh each do.
+lesson-id: activations
+status: planned
+requires:
+- single-neuron
+helpful: []
+---
+
+## What this lesson will cover
+
+**Real-world example:** Why one straight line cannot flag both too cold and too hot.
+
+**Signature visual:** A grid of points bending as each activation is switched on.

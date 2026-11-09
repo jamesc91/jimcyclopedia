@@ -1,0 +1,17 @@
+---
+title: Overfitting and regularization
+short-title: Overfitting
+description: When a network memorizes instead of learning, and the tools that stop
+  it.
+lesson-id: overfitting
+status: planned
+requires:
+- gradient-descent
+helpful: []
+---
+
+## What this lesson will cover
+
+**Real-world example:** A student who memorizes the practice exam.
+
+**Signature visual:** Train and test curves that split apart as model size grows.

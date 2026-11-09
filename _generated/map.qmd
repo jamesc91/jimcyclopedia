@@ -1,0 +1,84 @@
+```{mermaid}
+%%| fig-responsive: false
+flowchart TB
+  gradients["Gradients"]
+  agents["Agents"]
+  classic_nlp["Classic NLP"]
+  decoding["Decoding"]
+  evaluating_llms["Evaluating LLMs"]
+  lora["Fine-tuning, LoRA"]
+  rag["RAG"]
+  rlhf_dpo["RLHF and DPO"]
+  semantic_search["Semantic search"]
+  dot_product["Dot product"]
+  matrix_multiply["Matrix multiply"]
+  tensors["Tensors and shapes"]
+  activations["Activations"]
+  backpropagation["Backpropagation"]
+  forward_pass["Forward pass"]
+  gradient_descent["Gradient descent"]
+  loss_functions["Loss functions"]
+  overfitting["Overfitting"]
+  single_neuron["Single neuron"]
+  train_a_network["Train a network"]
+  softmax_cross_entropy["Softmax, cross-entropy"]
+  attention_idea["Attention idea"]
+  heads_position["Heads and position"]
+  next_token_training["Next-token training"]
+  qkv_tensors["Q, K, V tensors"]
+  rnns["RNNs and memory"]
+  tiny_gpt["Tiny GPT"]
+  tokens_embeddings["Tokens, embeddings"]
+  transformer_block["Transformer block"]
+  decoding --> agents
+  rag -.-> agents
+  transformer_block --> classic_nlp
+  train_a_network -.-> classic_nlp
+  next_token_training --> decoding
+  decoding --> evaluating_llms
+  rag -.-> evaluating_llms
+  agents -.-> evaluating_llms
+  next_token_training --> lora
+  matrix_multiply --> lora
+  semantic_search --> rag
+  decoding --> rag
+  next_token_training --> rlhf_dpo
+  tokens_embeddings --> semantic_search
+  transformer_block -.-> semantic_search
+  dot_product --> matrix_multiply
+  matrix_multiply --> tensors
+  single_neuron --> activations
+  gradient_descent --> backpropagation
+  activations --> forward_pass
+  matrix_multiply --> forward_pass
+  tensors -.-> forward_pass
+  loss_functions --> gradient_descent
+  gradients --> gradient_descent
+  forward_pass --> loss_functions
+  softmax_cross_entropy -.-> loss_functions
+  gradient_descent --> overfitting
+  dot_product --> single_neuron
+  backpropagation --> train_a_network
+  overfitting --> train_a_network
+  tokens_embeddings --> attention_idea
+  softmax_cross_entropy --> attention_idea
+  rnns -.-> attention_idea
+  qkv_tensors --> heads_position
+  transformer_block --> next_token_training
+  loss_functions --> next_token_training
+  attention_idea --> qkv_tensors
+  matrix_multiply --> qkv_tensors
+  tensors -.-> qkv_tensors
+  forward_pass --> rnns
+  tokens_embeddings --> rnns
+  next_token_training --> tiny_gpt
+  train_a_network --> tiny_gpt
+  dot_product --> tokens_embeddings
+  heads_position --> transformer_block
+  forward_pass --> transformer_block
+  classDef published fill:#dce8fb,stroke:#1f5fbf,stroke-width:2px,color:#1b2430
+  classDef planned fill:#ffffff,stroke:#b4bdc9,color:#5b6675
+  class matrix_multiply published
+  class gradients,agents,classic_nlp,decoding,evaluating_llms,lora,rag,rlhf_dpo,semantic_search,dot_product,tensors,activations,backpropagation,forward_pass,gradient_descent,loss_functions,overfitting,single_neuron,train_a_network,softmax_cross_entropy,attention_idea,heads_position,next_token_training,qkv_tensors,rnns,tiny_gpt,tokens_embeddings,transformer_block planned
+  click matrix_multiply "lessons/linear-algebra/matrix-multiply.html"
+```

@@ -1,0 +1,12 @@
+// Cloudflare Workers static-assets config: serves the rendered site in _site/.
+// The site appears at https://jimcyclopedia.<your-subdomain>.workers.dev
+// until you attach a custom domain in the Cloudflare dashboard.
+{
+  "name": "jimcyclopedia",
+  "compatibility_date": "2026-11-08",
+  "assets": {
+    "directory": "./_site",
+    "not_found_handling": "404-page",
+    "html_handling": "auto-trailing-slash"
+  }
+}
