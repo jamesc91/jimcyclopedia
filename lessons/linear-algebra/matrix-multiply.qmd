@@ -218,11 +218,15 @@ W = np.array([[1.0, 0.0], [-0.10, 0.02], [-0.30, 0.50], [-2.0, 0.80]])
 
 fig, axes = plt.subplots(1, 3, figsize=(9, 3),
                          gridspec_kw={"width_ratios": [4, 2, 2]})
-for ax, M, title in zip(axes, [X, W, X @ W],
-                        ["X  (3 x 4)", "W  (4 x 2)", "X @ W  (3 x 2)"]):
-    ax.imshow(M, cmap="Blues" if M is X else "PuOr")
+# Same colours as the rest of the site: blue data, amber weights, grey result
+for ax, M, title, cmap in zip(axes, [X, W, X @ W],
+                              ["X  (3 x 4)", "W  (4 x 2)", "X @ W  (3 x 2)"],
+                              ["Blues", "Oranges", "Greys"]):
+    ax.imshow(M, cmap=cmap)
+    mid = (M.min() + M.max()) / 2
     for (r, c), v in np.ndenumerate(M):
-        ax.text(c, r, f"{v:g}", ha="center", va="center", fontsize=9)
+        ax.text(c, r, f"{v:g}", ha="center", va="center", fontsize=9,
+                color="white" if v > mid else "black")
     ax.set_title(title)
     ax.set_xticks([]); ax.set_yticks([])
 plt.tight_layout()
