@@ -29,6 +29,15 @@ OUT = ROOT / "_generated"
 STATUSES = {"published", "draft", "planned"}
 
 
+def write_if_changed(path: Path, text: str) -> None:
+    """Write only when the content differs. quarto preview treats a touched
+    sidebar.yml as a config change and reloads the page, and this script runs
+    before every render, so rewriting unchanged files causes a reload loop."""
+    if path.exists() and path.read_text(encoding="utf-8") == text:
+        return
+    path.write_text(text, encoding="utf-8")
+
+
 def read_header(path: Path) -> dict:
     """Return the YAML front matter of a .qmd file as a dict."""
     text = path.read_text(encoding="utf-8")
@@ -148,7 +157,7 @@ def write_sidebar(lessons: dict[str, dict], paths: list[dict]) -> None:
             "contents": [{"href": l["file"], "text": label(l)} for l in extra],
         })
     sidebar = {"website": {"sidebar": {"style": "docked", "search": False, "contents": contents}}}
-    (OUT / "sidebar.yml").write_text(yaml.safe_dump(sidebar, sort_keys=False), encoding="utf-8")
+    write_if_changed(OUT / "sidebar.yml", yaml.safe_dump(sidebar, sort_keys=False))
 
 
 def mermaid_id(lid: str) -> str:
@@ -176,7 +185,7 @@ def write_map(lessons: dict[str, dict]) -> None:
         if lesson["status"] == "published":
             lines.append(f'  click {mermaid_id(lesson["id"])} "{lesson["href"]}"')
     lines.append("```")
-    (OUT / "map.qmd").write_text("\n".join(lines) + "\n", encoding="utf-8")
+    write_if_changed(OUT / "map.qmd", "\n".join(lines) + "\n")
 
 
 def write_path_lists(lessons: dict[str, dict], paths: list[dict]) -> None:
@@ -193,14 +202,14 @@ def write_path_lists(lessons: dict[str, dict], paths: list[dict]) -> None:
                 tag = "" if cls == "published" else " [coming soon]{.soon}"
                 out.append(f"- [{l['title']}]({l['file']}){{.{cls}}}{tag}  \n  {l['summary']}")
             out.append(":::\n")
-        (OUT / f"path-{path['id']}.qmd").write_text("\n".join(out), encoding="utf-8")
+        write_if_changed(OUT / f"path-{path['id']}.qmd", "\n".join(out))
 
 
 def main() -> None:
     OUT.mkdir(exist_ok=True)
     lessons = load_lessons()
     paths = load_paths(lessons)
-    (OUT / "lessons.json").write_text(json.dumps(lessons, indent=2), encoding="utf-8")
+    write_if_changed(OUT / "lessons.json", json.dumps(lessons, indent=2))
     write_sidebar(lessons, paths)
     write_map(lessons)
     write_path_lists(lessons, paths)
