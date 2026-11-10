@@ -248,7 +248,7 @@ print("same answer:", np.allclose(loops, fast))
 </script></py-cell>
 ```
 
-One last picture: the three matrices as heat maps. Colour shows size, so you
+One last visual: the three matrices as heat maps. Colour shows size, so you
 can see which readings and weights drive each score.
 
 ```{=html}

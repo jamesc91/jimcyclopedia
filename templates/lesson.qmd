@@ -21,7 +21,7 @@ systems, engineering, everyday life, finance, software. No theory yet.
 
 The core idea in plain words, kept short: the definition and the rules that
 follow from it, with one tiny example. Put the lesson's one static diagram here,
-so the picture carries the idea before the full math.
+so the diagram carries the idea before the full math.
 
 ## The problem
 
@@ -34,7 +34,7 @@ The signature interactive. Reuse a widget from shared/widgets/ where you can.
 
 ## The math, minimal
 
-Only the equations needed, each tied to the picture, with shapes written out.
+Only the equations needed, each tied to the diagram, with shapes written out.
 
 ## Worked example
 

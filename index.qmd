@@ -12,7 +12,7 @@ on UAV flight controls and drone programs.
 
 I've spent a long time as a student: a BS, two MS degrees, an MBA and a PhD.
 Looking back, the handful of professors who did an amazing job all taught in a
-way I was receptive to. I learn best from pictures, and from real-world examples
+way I was receptive to. I learn best from visuals, and from real-world examples
 I can tie back to things I already know.
 
 Most lessons I find offer good visuals or good examples, and often neither. With
@@ -25,7 +25,7 @@ quantitative job interviews.
 ## How the lessons work
 
 Each lesson follows the same pattern: why the idea matters, the theory with one
-picture, a real problem it solves, an interactive diagram you can drag or step
+diagram, a real problem it solves, an interactive graphic you can drag or step
 through, the minimal math, a worked example, code you can run in your browser,
 and practice questions.
 

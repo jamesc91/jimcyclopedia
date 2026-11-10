@@ -18,7 +18,7 @@ metadata-files:
 
 website:
   title: "Jimcyclopedia"             # change the site name here
-  description: "Lessons on engineering, math and machine learning, each built on a picture and a real-world example."
+  description: "Lessons on engineering, math and machine learning, built on visuals and real-world examples."
   site-url: "https://jimcyclopedia.jamesrcook1991.workers.dev"   # change if you add a custom domain
   repo-url: "https://github.com/jamesc91/jimcyclopedia"
   page-navigation: true

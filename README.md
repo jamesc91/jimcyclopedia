@@ -1,6 +1,6 @@
 # Jimcyclopedia
 
-Engineering, math and machine learning, taught with pictures you can play with.
+Engineering, math and machine learning, taught with visuals and real-world examples.
 Built with [Quarto](https://quarto.org) and hosted on Cloudflare.
 
 ## Run it on your computer

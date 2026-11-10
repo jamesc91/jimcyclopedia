@@ -149,7 +149,7 @@ $$
 - **Shapes:** (n,) · (n,) → a single number. Here n = 2 bands; Run the code
   uses 3; the word lists inside a language model use thousands.
 - **Length:** a dotted with itself is Pythagoras: 3² + 4² = 25, so ‖(3, 4)‖ = 5.
-- **Shadow:** a's shadow on b is a · b / ‖b‖. That is the picture's rule,
+- **Shadow:** a's shadow on b is a · b / ‖b‖. That is the diagram's rule,
   a · b = ‖b‖ × shadow, rearranged.
 - **Cost:** n multiplications and n − 1 additions.
 

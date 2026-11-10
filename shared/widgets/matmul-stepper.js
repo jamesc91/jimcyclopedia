@@ -1,8 +1,8 @@
 // <matmul-stepper> : step through a matrix multiply one output cell at a time.
 //
-// Layout follows the classic picture: the right-hand matrix sits above the
+// Layout follows the classic textbook diagram: the right-hand matrix sits above the
 // result, the left-hand matrix sits to its left, so every output cell lands
-// exactly where its row and its column cross. When that picture is wider than
+// exactly where its row and its column cross. When that layout is wider than
 // the space available (phones, big matrices), the widget adds the class
 // "mm-stacked" and the three matrices stack vertically instead of scrolling.
 //
